@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" width="1280" height="820">
+  <defs>
+    <pattern id="sim-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#A8DADC" stroke-width="1" opacity="0.55" />
+    </pattern>
+  </defs>
+
+  <!-- Honeydew Page Canvas -->
+  <rect width="1280" height="820" fill="#F1FAEE" />
+
+  <!-- Section Header -->
+  <text x="56" y="54" font-family="monospace" font-weight="700" font-size="12" fill="#E63946">01. SELECTED WORK &amp; CASE STUDIES</text>
+  <text x="56" y="92" font-family="system-ui, sans-serif" font-weight="800" font-size="34" fill="#1D3557">Software projects paired with interactive UI simulations.</text>
+  <line x1="56" y1="116" x2="1224" y2="116" stroke="#A8DADC" stroke-width="1.5" />
+
+  <!-- FLAGSHIP #01: REPO-RIDDLE (Full-Width 12-Col Split Card) -->
+  <rect x="56" y="140" width="1168" height="330" fill="#FFFFFF" stroke="#1D3557" stroke-width="2" />
+  <rect x="56" y="140" width="1168" height="36" fill="#1D3557" />
+  <text x="78" y="163" font-family="monospace" font-weight="700" font-size="11" fill="#F1FAEE">FLAGSHIP SHOWCASE #01 · DEVELOPER TOOLING &amp; CODE INTELLIGENCE</text>
+  <text x="1202" y="163" text-anchor="end" font-family="monospace" font-size="11" fill="#A8DADC">Interactive UI Simulation + Public GitHub Repository</text>
+
+  <!-- Left 7 Cols: Interactive UI Simulation -->
+  <rect x="58" y="176" width="670" height="292" fill="#F1FAEE" />
+  <rect x="58" y="176" width="670" height="292" fill="url(#sim-grid)" />
+  <line x1="728" y1="176" x2="728" y2="468" stroke="#A8DADC" stroke-width="1.5" />
+
+  <rect x="58" y="176" width="670" height="34" fill="#A8DADC" opacity="0.3" />
+  <text x="78" y="198" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">UI SIMULATION 01 · REPO-RIDDLE ARCHITECTURE FLOW</text>
+  <text x="708" y="198" text-anchor="end" font-family="monospace" font-size="11" fill="#457B9D">Interactive UI Simulation</text>
+
+  <!-- 4 Interactive Nodes inside Simulation -->
+  <rect x="78" y="226" width="146" height="54" fill="#1D3557" stroke="#1D3557" stroke-width="1.5" />
+  <text x="90" y="246" font-family="monospace" font-weight="700" font-size="10" fill="#A8DADC">EXPRESS PROXY</text>
+  <text x="90" y="266" font-family="monospace" font-weight="700" font-size="11" fill="#F1FAEE">WEB-ui/server.ts</text>
+
+  <rect x="238" y="226" width="146" height="54" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <text x="250" y="246" font-family="monospace" font-weight="700" font-size="10" fill="#E63946">DEPENDENCY TRACE</text>
+  <text x="250" y="266" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">AST Symbol Graph</text>
+
+  <rect x="398" y="226" width="146" height="54" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <text x="410" y="246" font-family="monospace" font-weight="700" font-size="10" fill="#E63946">REASONING LAYER</text>
+  <text x="410" y="266" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">@google/genai</text>
+
+  <rect x="558" y="226" width="146" height="54" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <text x="570" y="246" font-family="monospace" font-weight="700" font-size="10" fill="#E63946">DESIGN TOKENS</text>
+  <text x="570" y="266" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">WEB-ui/DESIGN.md</text>
+
+  <!-- Pipeline Line -->
+  <line x1="150" y1="316" x2="630" y2="316" stroke="#457B9D" stroke-width="2" />
+  <circle cx="150" cy="316" r="12" fill="none" stroke="#E63946" stroke-width="2" />
+  <circle cx="150" cy="316" r="6" fill="#E63946" />
+  <circle cx="310" cy="316" r="12" fill="none" stroke="#1D3557" stroke-width="2" />
+  <circle cx="470" cy="316" r="12" fill="none" stroke="#1D3557" stroke-width="2" />
+  <circle cx="630" cy="316" r="12" fill="none" stroke="#1D3557" stroke-width="2" />
+
+  <rect x="78" y="348" width="626" height="64" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <text x="94" y="370" font-family="monospace" font-weight="700" font-size="11" fill="#E63946">INSPECTED MODULE · WEB-ui/server.ts</text>
+  <text x="94" y="392" font-family="system-ui, sans-serif" font-size="12" fill="#1D3557">Models how the Express server packages repository context and proxies requests to @google/genai.</text>
+
+  <rect x="58" y="434" width="670" height="34" fill="#A8DADC" opacity="0.25" />
+  <text x="78" y="455" font-family="system-ui, sans-serif" font-size="11" fill="#457B9D">Interactive UI Simulation · Illustrates AST symbol inspection and Express proxy flow</text>
+  <text x="708" y="455" text-anchor="end" font-family="monospace" font-weight="700" font-size="10" fill="#1D3557">PORTFOLIO UI SIMULATION</text>
+
+  <!-- Right 5 Cols: Flagship Narrative -->
+  <text x="756" y="210" font-family="monospace" font-weight="700" font-size="11" fill="#E63946">FLAGSHIP 01</text>
+  <text x="844" y="210" font-family="monospace" font-size="11" fill="#457B9D">· Developer Tooling · Public GitHub Repo</text>
+
+  <text x="756" y="252" font-family="system-ui, sans-serif" font-weight="800" font-size="32" fill="#1D3557">Repo-Riddle</text>
+  <text x="756" y="274" font-family="monospace" font-weight="700" font-size="12" fill="#E63946">Tactical Architecture Co-Pilot</text>
+
+  <text x="756" y="308" font-family="system-ui, sans-serif" font-size="14" fill="#1D3557">Helps developers explore unfamiliar repositories by pairing</text>
+  <text x="756" y="328" font-family="system-ui, sans-serif" font-size="14" fill="#1D3557">file-tree and AST dependency inspection with an Express</text>
+  <text x="756" y="348" font-family="system-ui, sans-serif" font-size="14" fill="#1D3557">backend proxy powered by @google/genai.</text>
+
+  <text x="756" y="384" font-family="monospace" font-size="11" fill="#457B9D">TECHNOLOGIES</text>
+  <text x="756" y="404" font-family="monospace" font-weight="600" font-size="11" fill="#1D3557">React · TypeScript · Vite · Tailwind CSS · Node.js · Express</text>
+
+  <rect x="756" y="424" width="118" height="32" fill="#E63946" />
+  <text x="815" y="444" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="12" fill="#F1FAEE">Case Study →</text>
+  <text x="1196" y="444" text-anchor="end" font-family="monospace" font-weight="700" font-size="12" fill="#1D3557">GitHub Repo ↗</text>
+
+  <!-- ROW 2: ALTERNATING EDITORIAL CARD (02 CARESYNC / NEURO-CORE - Text Left, Visual Right) -->
+  <rect x="56" y="500" width="1168" height="278" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+
+  <!-- Left 5 Cols: CareSync Narrative -->
+  <text x="84" y="538" font-family="monospace" font-weight="700" font-size="11" fill="#E63946">02</text>
+  <text x="108" y="538" font-family="monospace" font-size="11" fill="#457B9D">· Healthcare Systems · Seeded Demo Data + Web Preview</text>
+
+  <text x="84" y="576" font-family="system-ui, sans-serif" font-weight="800" font-size="28" fill="#1D3557">CareSync / NEURO-CORE</text>
+  <text x="84" y="598" font-family="monospace" font-weight="700" font-size="12" fill="#E63946">Hospital Management System</text>
+
+  <text x="84" y="630" font-family="system-ui, sans-serif" font-size="13.5" fill="#1D3557">Organizes clinical workflows across Admin, Doctor, and Patient</text>
+  <text x="84" y="650" font-family="system-ui, sans-serif" font-size="13.5" fill="#1D3557">portals using Python/Flask, SQLAlchemy, and seeded demo data</text>
+  <text x="84" y="670" font-family="system-ui, sans-serif" font-size="13.5" fill="#457B9D">Note: Uses deterministic seeded demo data (seed.py).</text>
+
+  <text x="84" y="704" font-family="monospace" font-weight="600" font-size="11" fill="#1D3557">Python · Flask · SQLAlchemy · SQLite · Chart.js · ReportLab QR</text>
+
+  <rect x="84" y="724" width="112" height="32" fill="#E63946" />
+  <text x="140" y="744" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="12" fill="#F1FAEE">Case Study →</text>
+  <text x="350" y="744" font-family="monospace" font-weight="700" font-size="12" fill="#1D3557">GitHub Repo ↗</text>
+  <text x="470" y="744" font-family="monospace" font-weight="700" font-size="12" fill="#E63946">Live Preview ↗</text>
+
+  <!-- Right 7 Cols: CareSync Interactive UI Simulation -->
+  <rect x="554" y="502" width="668" height="274" fill="#F1FAEE" />
+  <rect x="554" y="502" width="668" height="274" fill="url(#sim-grid)" />
+  <line x1="554" y1="500" x2="554" y2="778" stroke="#A8DADC" stroke-width="1.5" />
+
+  <rect x="554" y="502" width="668" height="34" fill="#A8DADC" opacity="0.3" />
+  <text x="576" y="523" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">UI SIMULATION 02 · CARESYNC ROLE &amp; QR-RX CONCEPT</text>
+  <text x="1200" y="523" text-anchor="end" font-family="monospace" font-size="11" fill="#457B9D">Interactive UI Simulation</text>
+
+  <rect x="576" y="556" width="420" height="160" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <text x="598" y="586" font-family="monospace" font-size="11" fill="#457B9D">DEMO ACCOUNT · <tspan fill="#E63946" font-weight="700">smith@neurocore.med (Seeded Demo)</tspan></text>
+  <text x="598" y="622" font-family="system-ui, sans-serif" font-weight="700" font-size="16" fill="#1D3557">Prescription Authoring + Auto-Suggest UI</text>
+  <text x="598" y="654" font-family="monospace" font-size="12" fill="#457B9D">Seeded SQLite Demo Records · ReportLab PDF Layout</text>
+
+  <rect x="1016" y="556" width="184" height="160" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <rect x="1084" y="586" width="48" height="48" fill="none" stroke="#1D3557" stroke-width="3" />
+  <rect x="1096" y="598" width="24" height="24" fill="#E63946" />
+  <text x="1108" y="666" text-anchor="middle" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">QR-RX-DEMO-89F2</text>
+</svg>

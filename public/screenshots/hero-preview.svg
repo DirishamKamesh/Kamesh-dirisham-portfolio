@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760">
+  <defs>
+    <pattern id="hero-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#A8DADC" stroke-width="1" opacity="0.28" />
+    </pattern>
+    <pattern id="dk-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#A8DADC" stroke-width="1" opacity="0.65" />
+    </pattern>
+  </defs>
+
+  <!-- Honeydew Background Canvas -->
+  <rect width="1280" height="760" fill="#F1FAEE" />
+  <rect width="1280" height="760" fill="url(#hero-grid)" />
+
+  <!-- Top Sticky 3-Zone Navbar -->
+  <rect x="0" y="0" width="1280" height="64" fill="#F1FAEE" stroke="#A8DADC" stroke-width="1" />
+  <!-- Left: Brand -->
+  <rect x="56" y="16" width="32" height="32" fill="#1D3557" />
+  <text x="72" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="13" fill="#F1FAEE">DK</text>
+  <text x="100" y="37" font-family="system-ui, sans-serif" font-weight="700" font-size="15" fill="#1D3557">— Dirisham Kamesh</text>
+
+  <!-- Center: Nav Links -->
+  <text x="510" y="37" font-family="system-ui, sans-serif" font-weight="600" font-size="14" fill="#1D3557">Work</text>
+  <rect x="510" y="45" width="35" height="2" fill="#E63946" />
+  <text x="580" y="37" font-family="system-ui, sans-serif" font-weight="500" font-size="14" fill="#457B9D">Services</text>
+  <text x="670" y="37" font-family="system-ui, sans-serif" font-weight="500" font-size="14" fill="#457B9D">Skills</text>
+  <text x="740" y="37" font-family="system-ui, sans-serif" font-weight="500" font-size="14" fill="#457B9D">About</text>
+
+  <!-- Right: Primary CTA -->
+  <rect x="1104" y="16" width="120" height="32" fill="#E63946" />
+  <text x="1164" y="36" text-anchor="middle" font-family="monospace" font-weight="700" font-size="11" fill="#F1FAEE" letter-spacing="1">LET'S TALK ↗</text>
+
+  <!-- Top Architectural Horizon Axis -->
+  <text x="56" y="106" font-family="monospace" font-size="11" fill="#457B9D">PORTFOLIO · FRONTEND &amp; UI ENGINEERING</text>
+  <text x="1224" y="106" text-anchor="end" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">VIGNAN, DUVVADA · B.TECH CSE '29</text>
+  <line x1="56" y1="118" x2="1224" y2="118" stroke="#1D3557" stroke-width="1.5" />
+
+  <!-- Left Column: Syne Display Introduction -->
+  <text x="56" y="156" font-family="monospace" font-weight="700" font-size="12" fill="#E63946">Frontend Developer &amp; UI Engineer</text>
+  <text x="292" y="156" font-family="monospace" font-size="12" fill="#457B9D">· Visakhapatnam, India · Internships &amp; Select Freelance</text>
+
+  <text x="56" y="238" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="76" fill="#1D3557" letter-spacing="-2.5">DIRISHAM</text>
+  <text x="56" y="314" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="76" fill="#E63946" letter-spacing="-2.5">KAMESH.</text>
+
+  <text x="56" y="366" font-family="system-ui, sans-serif" font-weight="700" font-size="25" fill="#1D3557">
+    Frontend engineering &amp; <tspan fill="#E63946">interactive interfaces</tspan> built with a <tspan fill="#E63946">point of view.</tspan>
+  </text>
+
+  <text x="56" y="408" font-family="system-ui, sans-serif" font-size="15" fill="#1D3557" opacity="0.85">
+    Computer science undergraduate focused on building expressive, responsive web interfaces
+  </text>
+  <text x="56" y="430" font-family="system-ui, sans-serif" font-size="15" fill="#1D3557" opacity="0.85">
+    and practical digital products across React, TypeScript, and Python/Flask.
+  </text>
+
+  <!-- Hero Action Buttons -->
+  <rect x="56" y="464" width="210" height="46" fill="#E63946" />
+  <text x="161" y="492" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="14" fill="#F1FAEE">Explore selected work ↘</text>
+
+  <rect x="282" y="464" width="174" height="46" fill="#FFFFFF" stroke="#457B9D" stroke-width="1.5" />
+  <text x="369" y="492" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="14" fill="#1D3557">Discuss a project</text>
+
+  <!-- Direct Profiles Strip -->
+  <line x1="56" y1="536" x2="720" y2="536" stroke="#A8DADC" stroke-width="1" />
+  <text x="56" y="562" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">DIRECT PROFILES:</text>
+  <text x="180" y="562" font-family="monospace" font-size="11" fill="#457B9D">@DirishamKamesh ↗  /  in/dirishamkamesh ↗  /  @kamesh.246 ↗  /  kameshdirisham@gmail.com</text>
+
+  <!-- Right Column: Interactive Architectural DK Monogram Sculpture -->
+  <rect x="760" y="140" width="464" height="432" fill="#FFFFFF" stroke="#A8DADC" stroke-width="1.5" />
+  <rect x="760" y="140" width="464" height="432" fill="url(#dk-grid)" />
+  <rect x="760" y="140" width="464" height="38" fill="#A8DADC" opacity="0.35" />
+  <text x="780" y="164" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">IDENTITY MONOGRAM · ARCHITECTURAL VECTOR</text>
+  <text x="1204" y="164" text-anchor="end" font-family="monospace" font-weight="700" font-size="11" fill="#E63946">DK · 2029</text>
+
+  <!-- Geometric DK Vector -->
+  <g transform="translate(882, 232)">
+    <path d="M 10 10 L 76 10 L 106 40 L 106 130 L 76 160 L 10 160 Z" fill="none" stroke="#1D3557" stroke-width="6" />
+    <path d="M 34 36 L 64 36 L 80 52 L 80 118 L 64 134 L 34 134 Z" fill="#A8DADC" opacity="0.45" stroke="#457B9D" stroke-width="2" />
+    <line x1="136" y1="10" x2="136" y2="160" stroke="#1D3557" stroke-width="8" />
+    <line x1="136" y1="88" x2="210" y2="12" stroke="#E63946" stroke-width="8" />
+    <line x1="154" y1="72" x2="214" y2="160" stroke="#1D3557" stroke-width="8" />
+    <circle cx="10" cy="10" r="5" fill="#E63946" />
+    <circle cx="210" cy="12" r="5" fill="#E63946" />
+    <circle cx="214" cy="160" r="5" fill="#E63946" />
+  </g>
+
+  <rect x="760" y="534" width="464" height="38" fill="#A8DADC" opacity="0.35" />
+  <text x="780" y="558" font-family="monospace" font-size="11" fill="#1D3557">VIGNAN, DUVVADA · VISAKHAPATNAM</text>
+  <text x="1204" y="558" text-anchor="end" font-family="monospace" font-weight="700" font-size="11" fill="#E63946">INTERACTIVE CANVAS</text>
+
+  <!-- Bottom 4-Column Coordinates Strip -->
+  <line x1="56" y1="604" x2="1224" y2="604" stroke="#A8DADC" stroke-width="1.5" />
+
+  <text x="56" y="632" font-family="monospace" font-size="11" fill="#457B9D">01. EDUCATION</text>
+  <text x="56" y="654" font-family="system-ui, sans-serif" font-weight="700" font-size="14" fill="#1D3557">B.Tech CSE · Vignan, Duvvada ('29)</text>
+  <text x="56" y="674" font-family="system-ui, sans-serif" font-size="12" fill="#457B9D">Second-year undergraduate</text>
+
+  <text x="360" y="632" font-family="monospace" font-size="11" fill="#457B9D">02. LOCATION</text>
+  <text x="360" y="654" font-family="system-ui, sans-serif" font-weight="700" font-size="14" fill="#1D3557">Visakhapatnam (Vizag), India</text>
+  <text x="360" y="674" font-family="system-ui, sans-serif" font-size="12" fill="#457B9D">Andhra Pradesh · Remote &amp; Hybrid</text>
+
+  <text x="664" y="632" font-family="monospace" font-size="11" fill="#457B9D">03. CORE STACK</text>
+  <text x="664" y="654" font-family="system-ui, sans-serif" font-weight="700" font-size="14" fill="#1D3557">React 19 · TypeScript · Python/Flask</text>
+  <text x="664" y="674" font-family="system-ui, sans-serif" font-size="12" fill="#457B9D">Tailwind CSS, @xyflow/react, Recharts</text>
+
+  <text x="968" y="632" font-family="monospace" font-size="11" fill="#457B9D">04. AVAILABILITY</text>
+  <text x="968" y="654" font-family="system-ui, sans-serif" font-weight="700" font-size="14" fill="#E63946">Internships &amp; Select Freelance</text>
+  <text x="968" y="674" font-family="system-ui, sans-serif" font-size="12" fill="#457B9D">Public GitHub repos &amp; UI simulations</text>
+
+  <!-- Ribbon Divider -->
+  <rect x="0" y="716" width="1280" height="44" fill="#A8DADC" opacity="0.4" />
+  <line x1="0" y1="716" x2="1280" y2="716" stroke="#A8DADC" stroke-width="1.5" />
+  <text x="56" y="743" font-family="monospace" font-weight="700" font-size="11" fill="#1D3557">01 REPO-RIDDLE (FLAGSHIP) · 02 CARESYNC · 03 FACULYNK · 04 READY-MAP</text>
+  <text x="1224" y="743" text-anchor="end" font-family="monospace" font-weight="700" font-size="11" fill="#E63946">SELECTED WORK</text>
+</svg>
