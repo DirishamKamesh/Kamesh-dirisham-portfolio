@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#F1FAEE"/>
+  <!-- Architectural grid lines in Frosted Blue -->
+  <line x1="80" y1="0" x2="80" y2="630" stroke="#A8DADC" stroke-width="1.5"/>
+  <line x1="1120" y1="0" x2="1120" y2="630" stroke="#A8DADC" stroke-width="1.5"/>
+  <line x1="0" y1="90" x2="1200" y2="90" stroke="#A8DADC" stroke-width="1.5"/>
+  <line x1="0" y1="540" x2="1200" y2="540" stroke="#A8DADC" stroke-width="1.5"/>
+  <!-- Elevated card frame -->
+  <rect x="80" y="90" width="1040" height="450" fill="#FFFFFF" stroke="#457B9D" stroke-width="2"/>
+  <!-- Geometric DK Monogram Mark -->
+  <g transform="translate(860, 175)">
+    <rect width="180" height="180" fill="#F1FAEE" stroke="#A8DADC" stroke-width="2"/>
+    <path d="M40 44H74C94.9868 44 112 61.0132 112 82V98C112 118.987 94.9868 136 74 136H40V44Z" stroke="#1D3557" stroke-width="10"/>
+    <path d="M112 44V136" stroke="#E63946" stroke-width="10"/>
+    <path d="M148 44L114 90L148 136" stroke="#E63946" stroke-width="10" stroke-linecap="square"/>
+  </g>
+  <!-- Editorial Typography -->
+  <text x="140" y="170" fill="#E63946" font-family="monospace" font-weight="700" font-size="18" letter-spacing="2">DIRISHAM KAMESH · PORTFOLIO</text>
+  <text x="140" y="265" fill="#1D3557" font-family="sans-serif" font-weight="700" font-size="56">I build digital experiences</text>
+  <text x="140" y="335" fill="#1D3557" font-family="sans-serif" font-weight="700" font-size="56">with a point of view.</text>
+  <text x="140" y="415" fill="#457B9D" font-family="sans-serif" font-size="24">Frontend Development · UI Engineering · Interactive Web Experiences</text>
+  <text x="140" y="485" fill="#1D3557" font-family="monospace" font-size="18">Visakhapatnam, India · B.Tech CSE @ Vignan, Duvvada (&apos;29)</text>
+</svg>
