@@ -1,13 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowUpRight, Mail, FileText, Download } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Mail,
+  FileText,
+  Download,
+  Eye,
+  EyeOff,
+} from 'lucide-react';
 import { profileData } from '@/data/profile';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { soundController } from '@/lib/sound';
 
 export function AboutAndProcessSection() {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [showInlineResumePdf, setShowInlineResumePdf] = useState(false);
   const activeStep = profileData.engineeringProcess[activeStepIndex];
 
   return (
@@ -97,7 +105,10 @@ export function AboutAndProcessSection() {
             </div>
 
             {/* Verified Resume Handling Card */}
-            <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3.5 shadow-[0_8px_28px_rgba(6,13,22,0.2)]">
+            <div
+              id="resume"
+              className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3.5 shadow-[0_8px_28px_rgba(6,13,22,0.2)] scroll-mt-24"
+            >
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-mono font-semibold text-[#E63946] flex items-center gap-2">
                   <FileText className="w-4 h-4" aria-hidden="true" />
@@ -113,26 +124,58 @@ export function AboutAndProcessSection() {
               </p>
 
               {profileData.resume.available && profileData.resume.url ? (
-                <div className="pt-1 flex flex-wrap items-center gap-3">
-                  <a
-                    href={profileData.resume.url}
-                    download={profileData.resume.fileName || 'Dirisham_Kamesh_Resume.pdf'}
-                    onClick={() => soundController.playSubtleTick(600)}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-fg)] transition-colors whitespace-nowrap"
-                  >
-                    <Download className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Download Resume (PDF)</span>
-                  </a>
-                  <a
-                    href={profileData.resume.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => soundController.playSubtleTick(540)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-mono font-semibold bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[#457B9D] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors whitespace-nowrap"
-                  >
-                    <span>View PDF</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
-                  </a>
+                <div className="space-y-3 pt-1">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href={profileData.resume.url}
+                      download={profileData.resume.fileName || 'Dirisham_Kamesh_Resume.pdf'}
+                      onClick={() => soundController.playSubtleTick(600)}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-fg)] transition-colors whitespace-nowrap"
+                    >
+                      <Download className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Download Resume (PDF)</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        soundController.playSubtleTick(540);
+                        setShowInlineResumePdf((prev) => !prev);
+                      }}
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-mono font-semibold bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[#457B9D] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors whitespace-nowrap cursor-pointer"
+                    >
+                      {showInlineResumePdf ? (
+                        <>
+                          <EyeOff className="w-3.5 h-3.5" aria-hidden="true" />
+                          <span>Hide Preview</span>
+                        </>
+                      ) : (
+                        <>
+                          <Eye className="w-3.5 h-3.5" aria-hidden="true" />
+                          <span>Preview PDF Inline</span>
+                        </>
+                      )}
+                    </button>
+                    <a
+                      href={profileData.resume.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => soundController.playSubtleTick(540)}
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-mono font-semibold bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors whitespace-nowrap"
+                    >
+                      <span>Open PDF</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+
+                  {showInlineResumePdf && (
+                    <div className="pt-2 border-t border-[var(--border-subtle)]">
+                      <iframe
+                        src={`${profileData.resume.url}#view=FitH`}
+                        title="Dirisham Kamesh Resume PDF"
+                        className="w-full h-[460px] bg-white border border-[var(--border-subtle)]"
+                      />
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-mono">

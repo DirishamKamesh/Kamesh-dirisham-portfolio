@@ -7,6 +7,7 @@ import { ServicesSection } from '@/components/sections/ServicesSection';
 import { TechStackSection } from '@/components/sections/TechStackSection';
 import { SkillsSection } from '@/components/sections/SkillsSection';
 import { AboutAndProcessSection } from '@/components/sections/AboutAndProcessSection';
+import { GoogleDocsWorkspaceSection } from '@/components/sections/GoogleDocsWorkspaceSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 
 export function HomePageClient() {
@@ -27,6 +28,7 @@ export function HomePageClient() {
       <TechStackSection />
       <SkillsSection />
       <AboutAndProcessSection />
+      <GoogleDocsWorkspaceSection />
       <ContactSection
         key={selectedService}
         preselectedService={selectedService}
