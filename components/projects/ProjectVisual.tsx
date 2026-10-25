@@ -148,11 +148,11 @@ export function ProjectVisual({
 
   return (
     <div
-      className={`relative w-full bg-[#F1FAEE] overflow-hidden select-none flex flex-col justify-between ${className}`}
+      className={`relative w-full bg-[var(--bg-canvas)] overflow-hidden select-none flex flex-col justify-between transition-colors duration-300 ${className}`}
     >
       {/* Focused Technical Blueprint Grid inside the Simulation Viewport */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-55"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-45"
         aria-hidden="true"
       >
         <defs>
@@ -165,7 +165,7 @@ export function ProjectVisual({
             <path
               d="M 32 0 L 0 0 0 32"
               fill="none"
-              stroke="#A8DADC"
+              stroke="var(--grid-stroke)"
               strokeWidth="1"
             />
           </pattern>
@@ -174,7 +174,7 @@ export function ProjectVisual({
       </svg>
 
       {/* Top Architectural Annotation Header */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 px-5 py-3 border-b border-[#A8DADC] text-xs font-mono text-[#1D3557] bg-[#A8DADC]/30">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 px-5 py-3 border-b border-[var(--border-subtle)] text-xs font-mono text-[var(--text-primary)] bg-[var(--bg-elevated)]/65">
         <span className="font-semibold">
           {variant === 'repo-riddle' &&
             'UI SIMULATION 01 · REPO-RIDDLE ARCHITECTURE FLOW'}
@@ -185,7 +185,7 @@ export function ProjectVisual({
           {variant === 'ready-map' &&
             'UI SIMULATION 04 · READY-MAP PREREQUISITE GRAPH'}
         </span>
-        <span className="text-[#457B9D] font-medium">
+        <span className="text-[#A8DADC] font-medium">
           Interactive UI Simulation
         </span>
       </div>
@@ -207,22 +207,24 @@ export function ProjectVisual({
                       soundController.playSubtleTick(580);
                       setActiveRiddleIdx(idx);
                     }}
-                    className={`p-3 text-left border transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946] ${
+                    className={`p-3 text-left border transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC] ${
                       isSelected
-                        ? 'bg-[#1D3557] text-[#F1FAEE] border-[#1D3557]'
-                        : 'bg-white text-[#1D3557] border-[#A8DADC] hover:border-[#457B9D]'
+                        ? 'bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] border-[var(--accent-primary)]'
+                        : 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-[var(--border-subtle)] hover:border-[#457B9D]'
                     }`}
                   >
                     <p
                       className={`text-[10px] font-mono font-semibold ${
-                        isSelected ? 'text-[#A8DADC]' : 'text-[#E63946]'
+                        isSelected ? 'text-[#1D3557]' : 'text-[#A8DADC]'
                       }`}
                     >
                       {node.role}
                     </p>
                     <p
                       className={`text-xs font-mono font-semibold mt-1 truncate ${
-                        isSelected ? 'text-[#F1FAEE]' : 'text-[#1D3557]'
+                        isSelected
+                          ? 'text-[var(--accent-primary-fg)]'
+                          : 'text-[var(--text-primary)]'
                       }`}
                     >
                       {node.label}
@@ -260,7 +262,7 @@ export function ProjectVisual({
                   <circle
                     r="13"
                     fill="none"
-                    stroke={activeRiddleIdx === step ? '#E63946' : '#1D3557'}
+                    stroke={activeRiddleIdx === step ? '#A8DADC' : '#457B9D'}
                     strokeWidth="1.5"
                   />
                 </g>
@@ -268,16 +270,16 @@ export function ProjectVisual({
             </svg>
 
             {/* Active Node Explanation Box */}
-            <div className="p-3.5 bg-white border border-[#A8DADC] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="p-3.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="space-y-0.5">
-                <p className="text-[11px] font-mono font-semibold text-[#E63946]">
+                <p className="text-[11px] font-mono font-semibold text-[#A8DADC]">
                   INSPECTED MODULE · {REPO_RIDDLE_NODES[activeRiddleIdx].label}
                 </p>
-                <p className="text-xs text-[#1D3557] leading-relaxed">
+                <p className="text-xs text-[var(--text-primary)] leading-relaxed">
                   {REPO_RIDDLE_NODES[activeRiddleIdx].summary}
                 </p>
               </div>
-              <span className="text-[11px] font-mono text-[#457B9D] shrink-0">
+              <span className="text-[11px] font-mono text-[var(--text-secondary)] shrink-0">
                 Select module above
               </span>
             </div>
@@ -291,7 +293,7 @@ export function ProjectVisual({
               <div
                 role="group"
                 aria-label="Select simulated CareSync role view"
-                className="inline-flex flex-wrap items-center gap-1 bg-white p-1 border border-[#A8DADC]"
+                className="inline-flex flex-wrap items-center gap-1 bg-[var(--bg-surface)] p-1 border border-[var(--border-subtle)]"
               >
                 {CARESYNC_PORTALS.map((portal, idx) => (
                   <button
@@ -302,10 +304,10 @@ export function ProjectVisual({
                       soundController.playSubtleTick(560);
                       setActivePortalIdx(idx);
                     }}
-                    className={`px-2.5 py-1.5 text-xs font-mono transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946] ${
+                    className={`px-2.5 py-1.5 text-xs font-mono transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC] ${
                       activePortalIdx === idx
-                        ? 'bg-[#1D3557] text-[#F1FAEE] font-semibold'
-                        : 'text-[#457B9D] hover:text-[#1D3557]'
+                        ? 'bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] font-semibold'
+                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {portal.label}
@@ -319,30 +321,30 @@ export function ProjectVisual({
                   soundController.playSubtleTick(640);
                   setQrVerified((prev) => !prev);
                 }}
-                className="px-2.5 py-1.5 text-xs font-mono bg-white border border-[#A8DADC] text-[#1D3557] hover:border-[#E63946] hover:text-[#E63946] transition-colors cursor-pointer"
+                className="px-2.5 py-1.5 text-xs font-mono bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-primary)] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors cursor-pointer"
               >
                 {qrVerified ? 'Demo QR: Checked' : 'Test QR Check'}
               </button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-stretch">
-              <div className="sm:col-span-8 bg-white border border-[#A8DADC] p-4 flex flex-col justify-between space-y-2">
-                <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] font-mono text-[#457B9D]">
+              <div className="sm:col-span-8 bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-4 flex flex-col justify-between space-y-2">
+                <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] font-mono text-[var(--text-secondary)]">
                   <span>DEMO ACCOUNT</span>
-                  <span className="text-[#E63946] font-semibold">
+                  <span className="text-[#A8DADC] font-semibold">
                     {CARESYNC_PORTALS[activePortalIdx].cred}
                   </span>
                 </div>
-                <p className="text-sm font-semibold text-[#1D3557]">
+                <p className="text-sm font-semibold text-[var(--text-primary)]">
                   {CARESYNC_PORTALS[activePortalIdx].rxStatus}
                 </p>
-                <p className="text-xs font-mono text-[#457B9D]">
+                <p className="text-xs font-mono text-[var(--text-secondary)]">
                   {CARESYNC_PORTALS[activePortalIdx].metrics}
                 </p>
               </div>
 
               {/* Stylized ReportLab QR-Rx Verification Preview */}
-              <div className="sm:col-span-4 bg-white border border-[#A8DADC] p-3.5 flex flex-col items-center justify-center text-center space-y-1.5">
+              <div className="sm:col-span-4 bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-3.5 flex flex-col items-center justify-center text-center space-y-1.5">
                 <svg
                   viewBox="0 0 64 64"
                   className="w-11 h-11"
@@ -354,7 +356,7 @@ export function ProjectVisual({
                     width="22"
                     height="22"
                     fill="none"
-                    stroke="#1D3557"
+                    stroke="#A8DADC"
                     strokeWidth="3.5"
                   />
                   <rect x="10" y="10" width="10" height="10" fill="#E63946" />
@@ -364,24 +366,24 @@ export function ProjectVisual({
                     width="22"
                     height="22"
                     fill="none"
-                    stroke="#1D3557"
+                    stroke="#A8DADC"
                     strokeWidth="3.5"
                   />
-                  <rect x="44" y="10" width="10" height="10" fill="#1D3557" />
+                  <rect x="44" y="10" width="10" height="10" fill="#F1FAEE" />
                   <rect
                     x="4"
                     y="38"
                     width="22"
                     height="22"
                     fill="none"
-                    stroke="#1D3557"
+                    stroke="#A8DADC"
                     strokeWidth="3.5"
                   />
-                  <rect x="10" y="44" width="10" height="10" fill="#1D3557" />
+                  <rect x="10" y="44" width="10" height="10" fill="#F1FAEE" />
                   <rect x="38" y="38" width="10" height="10" fill="#E63946" />
                   <rect x="50" y="50" width="10" height="10" fill="#457B9D" />
                 </svg>
-                <p className="text-[10px] font-mono font-semibold text-[#1D3557]">
+                <p className="text-[10px] font-mono font-semibold text-[var(--text-primary)]">
                   {CARESYNC_PORTALS[activePortalIdx].qrHash}
                 </p>
               </div>
@@ -393,10 +395,10 @@ export function ProjectVisual({
         {variant === 'faculynk' && (
           <div className="space-y-4 my-auto">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <span className="text-xs font-mono font-semibold text-[#1D3557]">
+              <span className="text-xs font-mono font-semibold text-[var(--text-primary)]">
                 CREDIT ALLOCATION PREVIEW
               </span>
-              <div className="inline-flex items-center bg-white p-1 border border-[#A8DADC]">
+              <div className="inline-flex items-center bg-[var(--bg-surface)] p-1 border border-[var(--border-subtle)]">
                 {FACULYNK_VIEWS.map((view, idx) => (
                   <button
                     key={view.id}
@@ -406,10 +408,10 @@ export function ProjectVisual({
                       soundController.playSubtleTick(580);
                       setFaculynkMode(idx as 0 | 1);
                     }}
-                    className={`px-2.5 py-1.5 text-xs font-mono transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946] ${
+                    className={`px-2.5 py-1.5 text-xs font-mono transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC] ${
                       faculynkMode === idx
-                        ? 'bg-[#1D3557] text-[#F1FAEE] font-semibold'
-                        : 'text-[#457B9D] hover:text-[#1D3557]'
+                        ? 'bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] font-semibold'
+                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {view.label}
@@ -418,37 +420,37 @@ export function ProjectVisual({
               </div>
             </div>
 
-            <div className="bg-white border border-[#A8DADC] p-4 space-y-3">
+            <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-4 space-y-3">
               {FACULYNK_VIEWS[faculynkMode].bars.map((row) => (
                 <div key={row.name} className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#1D3557] font-medium">
+                    <span className="text-[var(--text-primary)] font-medium">
                       {row.name}
                     </span>
                     <span
                       className={`tabular-nums ${
                         row.alert
                           ? 'text-[#E63946] font-semibold'
-                          : 'text-[#457B9D]'
+                          : 'text-[var(--text-secondary)]'
                       }`}
                     >
                       {row.credits} hrs/wk{' '}
                       {row.alert ? '· HIGH LOAD' : '· BALANCED'}
                     </span>
                   </div>
-                  <div className="w-full h-2.5 bg-[#F1FAEE] border border-[#A8DADC] overflow-hidden">
+                  <div className="w-full h-2.5 bg-[var(--bg-canvas)] border border-[var(--border-subtle)] overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${row.pct}%` }}
                       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       className={`h-full ${
-                        row.alert ? 'bg-[#E63946]' : 'bg-[#1D3557]'
+                        row.alert ? 'bg-[#E63946]' : 'bg-[#A8DADC]'
                       }`}
                     />
                   </div>
                 </div>
               ))}
-              <p className="text-[11px] font-mono text-[#457B9D] pt-1 border-t border-[#A8DADC]">
+              <p className="text-[11px] font-mono text-[var(--text-secondary)] pt-1 border-t border-[var(--border-subtle)]">
                 {FACULYNK_VIEWS[faculynkMode].note}
               </p>
             </div>
@@ -458,9 +460,9 @@ export function ProjectVisual({
         {/* 4. READY-MAP INTERACTIVE @XYFLOW/REACT GRAPH SIMULATION */}
         {variant === 'ready-map' && (
           <div className="space-y-3.5 my-auto">
-            <div className="flex items-center justify-between text-xs font-mono text-[#1D3557]">
+            <div className="flex items-center justify-between text-xs font-mono text-[var(--text-primary)]">
               <span>SELECT A NODE TO TOGGLE MILESTONE STATE</span>
-              <span className="text-[#E63946] font-semibold tabular-nums">
+              <span className="text-[#A8DADC] font-semibold tabular-nums">
                 {completedNodes.length} / {READY_MAP_NODES.length} DONE
               </span>
             </div>
@@ -475,18 +477,18 @@ export function ProjectVisual({
                     key={node.id}
                     type="button"
                     onClick={() => toggleReadyMapNode(node.id)}
-                    className={`p-3 text-left border transition-colors cursor-pointer flex flex-col justify-between gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946] ${
+                    className={`p-3 text-left border transition-colors cursor-pointer flex flex-col justify-between gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC] ${
                       isDone
-                        ? 'bg-[#1D3557] text-[#F1FAEE] border-[#1D3557]'
+                        ? 'bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] border-[var(--accent-primary)]'
                         : isSelected
-                          ? 'bg-white text-[#1D3557] border-[#E63946]'
-                          : 'bg-white text-[#1D3557] border-[#A8DADC] hover:border-[#457B9D]'
+                          ? 'bg-[var(--bg-elevated)] text-[var(--text-primary)] border-[#A8DADC]'
+                          : 'bg-[var(--bg-surface)] text-[var(--text-primary)] border-[var(--border-subtle)] hover:border-[#457B9D]'
                     }`}
                   >
                     <div className="flex items-center justify-between w-full text-[10px] font-mono">
                       <span
                         className={`tabular-nums font-semibold ${
-                          isDone ? 'text-[#A8DADC]' : 'text-[#E63946]'
+                          isDone ? 'text-[#0D1929]' : 'text-[#A8DADC]'
                         }`}
                       >
                         NODE {node.code}
@@ -495,7 +497,7 @@ export function ProjectVisual({
                         className={
                           isDone
                             ? 'text-[#E63946] font-semibold'
-                            : 'text-[#457B9D]'
+                            : 'text-[var(--text-secondary)]'
                         }
                       >
                         {isDone ? 'DONE' : 'NEXT'}
@@ -503,14 +505,16 @@ export function ProjectVisual({
                     </div>
                     <p
                       className={`text-xs font-semibold leading-snug ${
-                        isDone ? 'text-[#F1FAEE]' : 'text-[#1D3557]'
+                        isDone
+                          ? 'text-[var(--accent-primary-fg)]'
+                          : 'text-[var(--text-primary)]'
                       }`}
                     >
                       {node.title}
                     </p>
                     <p
                       className={`text-[10px] font-mono ${
-                        isDone ? 'text-[#A8DADC]' : 'text-[#457B9D]'
+                        isDone ? 'text-[#1D3557]' : 'text-[var(--text-secondary)]'
                       }`}
                     >
                       {node.prereq}
@@ -526,16 +530,16 @@ export function ProjectVisual({
                 READY_MAP_NODES.find((n) => n.id === selectedMapNode) ||
                 READY_MAP_NODES[0];
               return (
-                <div className="p-3 bg-white border border-[#A8DADC] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="p-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
-                    <p className="text-[11px] font-mono font-semibold text-[#E63946]">
+                    <p className="text-[11px] font-mono font-semibold text-[#A8DADC]">
                       PROTOTYPE NODE {activeNode.code} · {activeNode.title}
                     </p>
-                    <p className="text-xs text-[#1D3557]">
+                    <p className="text-xs text-[var(--text-primary)]">
                       {activeNode.detail}
                     </p>
                   </div>
-                  <span className="text-[10px] font-mono text-[#457B9D] shrink-0">
+                  <span className="text-[10px] font-mono text-[var(--text-secondary)] shrink-0">
                     Local Prototype UI
                   </span>
                 </div>
@@ -547,9 +551,9 @@ export function ProjectVisual({
 
       {/* Bottom Caption Footer */}
       {caption && (
-        <div className="relative z-10 px-5 py-2.5 border-t border-[#A8DADC] bg-[#A8DADC]/25 flex flex-wrap items-center justify-between gap-2 text-xs text-[#457B9D]">
+        <div className="relative z-10 px-5 py-2.5 border-t border-[var(--border-subtle)] bg-[var(--bg-elevated)]/45 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--text-secondary)]">
           <span>{caption}</span>
-          <span className="font-mono text-[11px] text-[#1D3557] font-semibold shrink-0">
+          <span className="font-mono text-[11px] text-[#A8DADC] font-semibold shrink-0">
             PORTFOLIO UI SIMULATION
           </span>
         </div>

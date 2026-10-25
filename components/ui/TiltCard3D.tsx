@@ -61,13 +61,13 @@ export function TiltCard3D({
         }}
         className="relative w-full h-full"
       >
-        {/* Subtle cursor-tracked Frosted Blue & Punch Red light-mode spotlight */}
+        {/* Subtle cursor-tracked Frosted Blue & Cerulean blueprint spotlight */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-20 transition-opacity duration-200"
           style={{
             opacity: spotlight.active ? 1 : 0,
-            background: `radial-gradient(520px circle at ${spotlight.x}% ${spotlight.y}%, rgba(168, 218, 220, 0.28), rgba(230, 57, 70, 0.06) 45%, transparent 70%)`,
+            background: `radial-gradient(520px circle at ${spotlight.x}% ${spotlight.y}%, rgba(168, 218, 220, 0.14), rgba(69, 123, 157, 0.08) 45%, transparent 70%)`,
           }}
         />
         {children}

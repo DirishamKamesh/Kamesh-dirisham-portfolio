@@ -5,7 +5,7 @@ import { HomePageClient } from '@/components/HomePageClient';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F1FAEE] text-[#1D3557]">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-canvas)] text-[var(--text-primary)]">
       <SiteHeader />
       <HomePageClient />
       <SiteFooter />

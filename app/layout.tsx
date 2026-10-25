@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#F1FAEE',
+  themeColor: '#0D1929',
   width: 'device-width',
   initialScale: 1,
 };
@@ -89,18 +89,32 @@ export default function RootLayout({
     ],
   };
 
+  const themeInitScript = `
+    try {
+      var saved = localStorage.getItem('dk-portfolio-theme');
+      var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    } catch (e) {}
+  `;
+
   return (
     <html
       lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${syne.variable} ${jakarta.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         suppressHydrationWarning
-        className="bg-[#F1FAEE] text-[#1D3557] font-sans antialiased selection:bg-[#E63946] selection:text-[#F1FAEE] overflow-x-hidden"
+        className="bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans antialiased selection:bg-[#A8DADC] selection:text-[#0D1929] overflow-x-hidden"
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#E63946] focus:text-[#F1FAEE] focus:font-mono focus:text-xs focus:font-semibold"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#A8DADC] focus:text-[#0D1929] focus:font-mono focus:text-xs focus:font-semibold"
         >
           Skip to main content
         </a>

@@ -25,44 +25,51 @@ export function ProjectDetailView({
   nextProject,
 }: ProjectDetailViewProps) {
   return (
-    <main id="main-content" className="min-h-screen bg-[#F1FAEE] text-[#1D3557]">
+    <main
+      id="main-content"
+      className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)] transition-colors duration-300"
+    >
       {/* Case Study Hero Opening */}
-      <section className="border-b border-[#A8DADC] pt-10 sm:pt-14 pb-14 sm:pb-20">
+      <section className="border-b border-[var(--border-subtle)] pt-10 sm:pt-14 pb-14 sm:pb-20">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 space-y-10">
           {/* Breadcrumb & Back Navigation */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#A8DADC] pb-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
             <Link
               href="/#work"
-              className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#457B9D] hover:text-[#E63946] transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#A8DADC] hover:text-[var(--text-primary)] transition-colors"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
               <span>Back to Selected Work</span>
             </Link>
 
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#457B9D]">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[var(--text-secondary)]">
               <span className="text-[#E63946] font-semibold tabular-nums">
                 CASE STUDY {project.index}
               </span>
-              <span aria-hidden="true">·</span>
+              <span aria-hidden="true" className="text-[#457B9D]">
+                ·
+              </span>
               <span>{project.category}</span>
-              <span aria-hidden="true">·</span>
-              <span>{project.statusLabel}</span>
+              <span aria-hidden="true" className="text-[#457B9D]">
+                ·
+              </span>
+              <span className="text-[#A8DADC]">{project.statusLabel}</span>
             </div>
           </div>
 
           {/* Title & Primary Links */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-8 space-y-3">
-              <p className="text-xs font-mono font-semibold text-[#E63946]">
+              <p className="text-xs font-mono font-semibold text-[#A8DADC]">
                 {project.subtitle}
               </p>
               <h1
-                className="font-display font-bold text-[#1D3557] tracking-tight leading-[1.06] text-balance"
+                className="font-display font-bold text-[var(--text-primary)] tracking-tight leading-[1.06] text-balance"
                 style={{ fontSize: 'clamp(2.25rem, 4.5vw, 4rem)' }}
               >
                 {project.title}
               </h1>
-              <p className="text-base sm:text-xl text-[#457B9D] leading-relaxed max-w-3xl">
+              <p className="text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-3xl">
                 {project.tagline}
               </p>
             </div>
@@ -73,14 +80,14 @@ export function ProjectDetailView({
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[#1D3557] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] hover:bg-[#F1FAEE] hover:text-[#0D1929] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
                   <span>Inspect Source on GitHub</span>
                   <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                 </a>
               ) : (
-                <span className="inline-flex items-center gap-2 px-4 py-3 text-xs font-mono font-semibold text-[#1D3557] bg-white border border-[#457B9D] whitespace-nowrap shrink-0">
-                  <Terminal className="w-4 h-4 text-[#E63946]" aria-hidden="true" />
+                <span className="inline-flex items-center gap-2 px-4 py-3 text-xs font-mono font-semibold text-[var(--text-primary)] bg-[var(--bg-surface)] border border-[#457B9D] whitespace-nowrap shrink-0">
+                  <Terminal className="w-4 h-4 text-[#A8DADC]" aria-hidden="true" />
                   <span>Local Prototype · UI Simulation Below</span>
                 </span>
               )}
@@ -90,7 +97,7 @@ export function ProjectDetailView({
                   href={project.liveDemoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold bg-white text-[#1D3557] border border-[#457B9D] hover:border-[#E63946] hover:text-[#E63946] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--bg-elevated)] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
                   <span>{project.liveDemoLabel || 'Live Preview'}</span>
                   <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
@@ -100,7 +107,7 @@ export function ProjectDetailView({
           </div>
 
           {/* Interactive Architectural Simulation */}
-          <div className="pt-2 border border-[#A8DADC]">
+          <div className="pt-2 border border-[var(--border-subtle)]">
             <ProjectVisual
               variant={project.visualVariant}
               caption={project.visualCaption}
@@ -108,44 +115,50 @@ export function ProjectDetailView({
           </div>
 
           {/* Metadata Ledger Strip */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-[#A8DADC]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-[var(--border-subtle)]">
             <div className="space-y-1">
-              <p className="text-xs font-mono text-[#457B9D]">SOURCE & WORKSPACE</p>
+              <p className="text-xs font-mono text-[#457B9D]">SOURCE &amp; WORKSPACE</p>
               {project.repoUrl ? (
                 <a
                   href={project.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-mono font-semibold text-[#1D3557] hover:text-[#E63946] underline underline-offset-4 break-all"
+                  className="text-sm font-mono font-semibold text-[#A8DADC] hover:text-[var(--text-primary)] underline underline-offset-4 break-all"
                 >
                   DirishamKamesh/{project.repoName}
                 </a>
               ) : (
-                <p className="text-sm font-mono font-semibold text-[#1D3557]">
+                <p className="text-sm font-mono font-semibold text-[var(--text-primary)]">
                   Local Workspace Prototype
                 </p>
               )}
-              <p className="text-xs font-mono text-[#457B9D]">
+              <p className="text-xs font-mono text-[var(--text-secondary)]">
                 Path: {project.localWorkspacePath}
               </p>
             </div>
 
             <div className="space-y-1">
               <p className="text-xs font-mono text-[#457B9D]">PROJECT STATUS</p>
-              <p className="text-sm font-semibold text-[#1D3557]">{project.statusLabel}</p>
-              <p className="text-xs text-[#457B9D]">{project.authenticityNote}</p>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
+                {project.statusLabel}
+              </p>
+              <p className="text-xs text-[var(--text-secondary)]">
+                {project.authenticityNote}
+              </p>
             </div>
 
             <div className="space-y-1">
-              <p className="text-xs font-mono text-[#457B9D]">VERIFICATION & HOSTING</p>
-              <p className="text-xs text-[#457B9D] leading-relaxed">
+              <p className="text-xs font-mono text-[#457B9D]">
+                VERIFICATION &amp; HOSTING
+              </p>
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 {project.demoVerificationNote}
               </p>
             </div>
 
             <div className="space-y-1">
               <p className="text-xs font-mono text-[#457B9D]">CORE TECH STACK</p>
-              <p className="text-xs font-mono font-semibold text-[#1D3557] leading-relaxed">
+              <p className="text-xs font-mono font-semibold text-[var(--text-primary)] leading-relaxed">
                 {project.technologies.join(' · ')}
               </p>
             </div>
@@ -154,39 +167,39 @@ export function ProjectDetailView({
       </section>
 
       {/* Case Study Deep-Dive Sections */}
-      <section className="py-16 sm:py-24 border-b border-[#A8DADC]">
+      <section className="py-16 sm:py-24 border-b border-[var(--border-subtle)]">
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 space-y-20">
           {/* 1. Purpose, Problem & Personal Contribution */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-4 space-y-2">
-              <p className="text-xs font-mono font-semibold text-[#E63946]">
-                01. PURPOSE & PROBLEM
+              <p className="text-xs font-mono font-semibold text-[#A8DADC]">
+                01. PURPOSE &amp; PROBLEM
               </p>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#1D3557]">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
                 Why this system was engineered
               </h2>
             </div>
 
             <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white border border-[#A8DADC] p-6 space-y-3">
+              <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3">
                 <p className="text-xs font-mono text-[#457B9D]">PROJECT OVERVIEW</p>
-                <p className="text-sm sm:text-base text-[#1D3557] leading-relaxed">
+                <p className="text-sm sm:text-base text-[var(--text-primary)] leading-relaxed">
                   {project.purposeAndProblem.overview}
                 </p>
               </div>
 
-              <div className="bg-white border border-[#A8DADC] p-6 space-y-3">
+              <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3">
                 <p className="text-xs font-mono text-[#457B9D]">PROBLEM ADDRESSED</p>
-                <p className="text-sm sm:text-base text-[#457B9D] leading-relaxed">
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
                   {project.purposeAndProblem.problemStatement}
                 </p>
               </div>
 
-              <div className="md:col-span-2 bg-white border border-[#A8DADC] p-6 space-y-2">
-                <p className="text-xs font-mono font-semibold text-[#E63946]">
-                  DOCUMENTED SCOPE & CONTRIBUTION
+              <div className="md:col-span-2 bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-2">
+                <p className="text-xs font-mono font-semibold text-[#A8DADC]">
+                  DOCUMENTED SCOPE &amp; CONTRIBUTION
                 </p>
-                <p className="text-sm sm:text-base text-[#1D3557] leading-relaxed">
+                <p className="text-sm sm:text-base text-[var(--text-primary)] leading-relaxed">
                   {project.contributionSummary}
                 </p>
               </div>
@@ -194,15 +207,15 @@ export function ProjectDetailView({
           </div>
 
           {/* 2. Implemented Features vs Next Steps Roadmap */}
-          <div className="pt-14 border-t border-[#A8DADC] grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="pt-14 border-t border-[var(--border-subtle)] grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-4 space-y-2">
-              <p className="text-xs font-mono font-semibold text-[#E63946]">
-                02. KEY CODEBASE FILES & ROADMAP
+              <p className="text-xs font-mono font-semibold text-[#A8DADC]">
+                02. KEY CODEBASE FILES &amp; ROADMAP
               </p>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#1D3557]">
-                Implemented capabilities & next deployment steps
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
+                Implemented capabilities &amp; next deployment steps
               </h2>
-              <p className="text-xs sm:text-sm text-[#457B9D] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 Separates verified capabilities present in the codebase from the upcoming
                 deployment and documentation steps.
               </p>
@@ -214,22 +227,22 @@ export function ProjectDetailView({
                 {project.implementedFeatures.map((feat) => (
                   <div
                     key={feat.title}
-                    className="bg-white border border-[#A8DADC] p-6 flex flex-col justify-between gap-4"
+                    className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 flex flex-col justify-between gap-4"
                   >
                     <div className="space-y-2.5">
-                      <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#E63946]">
+                      <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#A8DADC]">
                         <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
                         <span>IMPLEMENTED IN CODEBASE</span>
                       </div>
-                      <h3 className="font-display text-lg font-bold text-[#1D3557]">
+                      <h3 className="font-display text-lg font-bold text-[var(--text-primary)]">
                         {feat.title}
                       </h3>
-                      <p className="text-sm text-[#457B9D] leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         {feat.detail}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-[#A8DADC] text-xs font-mono font-medium text-[#1D3557]">
+                    <div className="pt-3 border-t border-[var(--border-subtle)] text-xs font-mono font-medium text-[#A8DADC]">
                       Key files: {feat.sourceEvidence}
                     </div>
                   </div>
@@ -237,14 +250,14 @@ export function ProjectDetailView({
               </div>
 
               {/* Next Steps Roadmap */}
-              <div className="bg-white border border-[#A8DADC] p-6 space-y-4">
-                <p className="text-xs font-mono font-semibold text-[#E63946]">
-                  NEXT STEPS & DEPLOYMENT CHECKLIST
+              <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-4">
+                <p className="text-xs font-mono font-semibold text-[#A8DADC]">
+                  NEXT STEPS &amp; DEPLOYMENT CHECKLIST
                 </p>
-                <ul className="space-y-2.5 text-sm text-[#1D3557]">
+                <ul className="space-y-2.5 text-sm text-[var(--text-primary)]">
                   {project.plannedOrConceptualFeatures.map((item) => (
                     <li key={item} className="flex items-baseline gap-2.5">
-                      <span className="font-mono text-xs font-bold text-[#E63946]">·</span>
+                      <span className="font-mono text-xs font-bold text-[#A8DADC]">·</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -254,12 +267,12 @@ export function ProjectDetailView({
           </div>
 
           {/* 3. Technical Implementation & Architecture Layers */}
-          <div className="pt-14 border-t border-[#A8DADC] grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="pt-14 border-t border-[var(--border-subtle)] grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-4 space-y-2">
-              <p className="text-xs font-mono font-semibold text-[#E63946]">
+              <p className="text-xs font-mono font-semibold text-[#A8DADC]">
                 03. TECHNICAL IMPLEMENTATION
               </p>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#1D3557]">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
                 System layers and engineering decisions
               </h2>
             </div>
@@ -269,15 +282,15 @@ export function ProjectDetailView({
                 {project.technicalArchitecture.map((layerObj) => (
                   <div
                     key={layerObj.layer}
-                    className="bg-white border border-[#A8DADC] p-6 space-y-3"
+                    className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3"
                   >
-                    <p className="text-xs font-mono font-semibold text-[#E63946]">
+                    <p className="text-xs font-mono font-semibold text-[#A8DADC]">
                       {layerObj.layer}
                     </p>
-                    <h3 className="font-display text-base font-bold text-[#1D3557]">
+                    <h3 className="font-display text-base font-bold text-[var(--text-primary)]">
                       {layerObj.stack}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#457B9D] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                       {layerObj.details}
                     </p>
                   </div>
@@ -289,15 +302,15 @@ export function ProjectDetailView({
                 {project.engineeringDecisions.map((item, idx) => (
                   <div
                     key={item.decision}
-                    className="bg-white border border-[#A8DADC] p-6 space-y-2.5"
+                    className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-2.5"
                   >
-                    <p className="text-xs font-mono font-semibold text-[#E63946] tabular-nums">
+                    <p className="text-xs font-mono font-semibold text-[#A8DADC] tabular-nums">
                       DECISION 0{idx + 1}
                     </p>
-                    <h3 className="font-display text-lg font-bold text-[#1D3557]">
+                    <h3 className="font-display text-lg font-bold text-[var(--text-primary)]">
                       {item.decision}
                     </h3>
-                    <p className="text-sm text-[#457B9D] leading-relaxed">
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                       {item.rationale}
                     </p>
                   </div>
@@ -305,15 +318,15 @@ export function ProjectDetailView({
               </div>
 
               {/* Documented Constraints & Honest Notes */}
-              <div className="bg-white border border-[#A8DADC] p-6 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#1D3557]">
+              <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[var(--text-primary)]">
                   <AlertCircle className="w-4 h-4 text-[#E63946]" aria-hidden="true" />
-                  <span>DOCUMENTED CONSTRAINTS & REPOSITORY NOTES</span>
+                  <span>DOCUMENTED CONSTRAINTS &amp; REPOSITORY NOTES</span>
                 </div>
-                <ul className="space-y-2 text-sm text-[#457B9D]">
+                <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                   {project.limitationsAndNotes.map((note) => (
                     <li key={note} className="flex items-baseline gap-2.5">
-                      <span className="font-mono text-xs font-bold text-[#E63946]">·</span>
+                      <span className="font-mono text-xs font-bold text-[#A8DADC]">·</span>
                       <span>{note}</span>
                     </li>
                   ))}
@@ -325,9 +338,12 @@ export function ProjectDetailView({
       </section>
 
       {/* Next / Previous Project Navigation */}
-      <section aria-label="Navigate between projects" className="py-14 sm:py-20 bg-[#F1FAEE]">
+      <section
+        aria-label="Navigate between projects"
+        className="py-14 sm:py-20 bg-[var(--bg-canvas)]"
+      >
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 space-y-8">
-          <div className="flex items-center justify-between text-xs font-mono text-[#457B9D]">
+          <div className="flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
             <span>CONTINUE EXPLORING WORK</span>
             <Link
               href="/#contact"
@@ -340,39 +356,43 @@ export function ProjectDetailView({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link
               href={`/work/${prevProject.slug}`}
-              className="group bg-white border border-[#A8DADC] hover:border-[#457B9D] p-6 sm:p-8 flex flex-col justify-between gap-4 transition-colors"
+              className="group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[#457B9D] p-6 sm:p-8 flex flex-col justify-between gap-4 transition-colors"
             >
-              <div className="flex items-center justify-between text-xs font-mono text-[#457B9D]">
-                <span className="inline-flex items-center gap-1.5 group-hover:text-[#E63946]">
+              <div className="flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
+                <span className="inline-flex items-center gap-1.5 group-hover:text-[#A8DADC]">
                   <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>PREVIOUS CASE STUDY</span>
                 </span>
                 <span className="tabular-nums">{prevProject.index}</span>
               </div>
               <div>
-                <p className="font-display text-2xl font-bold text-[#1D3557] group-hover:text-[#E63946] transition-colors">
+                <p className="font-display text-2xl font-bold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors">
                   {prevProject.title}
                 </p>
-                <p className="text-xs text-[#457B9D] mt-1">{prevProject.category}</p>
+                <p className="text-xs text-[var(--text-secondary)] mt-1">
+                  {prevProject.category}
+                </p>
               </div>
             </Link>
 
             <Link
               href={`/work/${nextProject.slug}`}
-              className="group bg-white border border-[#A8DADC] hover:border-[#457B9D] p-6 sm:p-8 flex flex-col justify-between gap-4 transition-colors text-left md:text-right"
+              className="group bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[#457B9D] p-6 sm:p-8 flex flex-col justify-between gap-4 transition-colors text-left md:text-right"
             >
-              <div className="flex items-center justify-between text-xs font-mono text-[#457B9D]">
+              <div className="flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
                 <span className="tabular-nums">{nextProject.index}</span>
-                <span className="inline-flex items-center gap-1.5 group-hover:text-[#E63946]">
+                <span className="inline-flex items-center gap-1.5 group-hover:text-[#A8DADC]">
                   <span>NEXT CASE STUDY</span>
                   <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </span>
               </div>
               <div>
-                <p className="font-display text-2xl font-bold text-[#1D3557] group-hover:text-[#E63946] transition-colors">
+                <p className="font-display text-2xl font-bold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors">
                   {nextProject.title}
                 </p>
-                <p className="text-xs text-[#457B9D] mt-1">{nextProject.category}</p>
+                <p className="text-xs text-[var(--text-secondary)] mt-1">
+                  {nextProject.category}
+                </p>
               </div>
             </Link>
           </div>

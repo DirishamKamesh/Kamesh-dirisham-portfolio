@@ -15,7 +15,9 @@ import {
 } from 'lucide-react';
 import { profileData } from '@/data/profile';
 import { Magnetic } from '@/components/ui/MagneticButton';
+import { ThemeTogglePill } from '@/components/ui/ThemeTogglePill';
 import { useReducedMotionPref } from '@/hooks/useReducedMotionPref';
+import { useTheme } from '@/hooks/useTheme';
 import { soundController } from '@/lib/sound';
 
 interface NavItem {
@@ -61,6 +63,7 @@ const VERIFIED_SOCIALS = [
 export function SiteHeader() {
   const pathname = usePathname();
   const reducedMotion = useReducedMotionPref();
+  const { theme, isDark, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
@@ -149,13 +152,13 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-colors duration-200 ${
+      className={`sticky top-0 z-40 w-full transition-colors duration-300 ${
         scrolled
-          ? 'bg-[#F1FAEE]/92 backdrop-blur-md border-b border-[#A8DADC] shadow-[0_2px_20px_rgba(29,53,87,0.05)]'
-          : 'bg-[#F1FAEE]/85 backdrop-blur-sm border-b border-[#A8DADC]/80'
+          ? 'bg-[var(--bg-header)] backdrop-blur-md border-b border-[var(--border-subtle)] shadow-[0_4px_24px_rgba(6,13,22,0.28)]'
+          : 'bg-[var(--bg-surface)]/90 backdrop-blur-sm border-b border-[var(--border-subtle)]'
       }`}
     >
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-4 sm:gap-8">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-4 sm:gap-6">
         {/* LEFT — Personal Brand */}
         <div className="flex items-center shrink-0">
           <Link
@@ -171,12 +174,12 @@ export function SiteHeader() {
               }
             }}
             aria-label="Dirisham Kamesh — Home"
-            className="group inline-flex items-center gap-2.5 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946]"
+            className="group inline-flex items-center gap-2.5 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A8DADC]"
           >
-            <span className="inline-flex items-center justify-center w-8 h-8 bg-[#1D3557] text-[#F1FAEE] font-display text-xs font-extrabold tracking-tight group-hover:bg-[#E63946] transition-colors duration-150">
+            <span className="inline-flex items-center justify-center w-8 h-8 bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] font-display text-xs font-extrabold tracking-tight group-hover:bg-[#E63946] group-hover:text-[#F1FAEE] transition-colors duration-150">
               DK
             </span>
-            <span className="font-display text-sm sm:text-base font-bold tracking-tight text-[#1D3557] group-hover:text-[#E63946] transition-colors duration-150">
+            <span className="font-display text-sm sm:text-base font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors duration-150">
               <span className="text-[#457B9D] font-normal mr-1.5 hidden sm:inline">
                 —
               </span>
@@ -188,7 +191,7 @@ export function SiteHeader() {
         {/* CENTER — Primary Navigation */}
         <nav
           aria-label="Primary navigation"
-          className="hidden md:flex items-center justify-center gap-7 lg:gap-9"
+          className="hidden md:flex items-center justify-center gap-6 lg:gap-9"
         >
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.sectionId;
@@ -198,10 +201,10 @@ export function SiteHeader() {
                 href={item.href}
                 onClick={(e) => handleAnchorClick(e, item.sectionId)}
                 aria-current={isActive ? 'location' : undefined}
-                className={`relative py-2 text-sm font-medium transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946] ${
+                className={`relative py-2 text-sm font-medium transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A8DADC] ${
                   isActive
-                    ? 'text-[#1D3557] font-semibold'
-                    : 'text-[#457B9D] hover:text-[#1D3557]'
+                    ? 'text-[var(--accent-primary)] font-semibold'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 <span>{item.label}</span>
@@ -212,7 +215,7 @@ export function SiteHeader() {
                     layoutId={
                       reducedMotion ? undefined : 'navbar-active-underline'
                     }
-                    className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-[#E63946]"
+                    className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-[var(--accent-primary)]"
                     transition={{
                       type: 'spring',
                       stiffness: 420,
@@ -225,12 +228,20 @@ export function SiteHeader() {
           })}
         </nav>
 
-        {/* RIGHT — Optional Unboxed Icon Links (Wide Screens Only) + Prominent "LET'S TALK ↗" CTA */}
-        <div className="flex items-center justify-end gap-3 lg:gap-4 shrink-0">
+        {/* RIGHT — Immersive Dark/Light Toggle + Social Icons + Prominent "LET'S TALK ↗" CTA */}
+        <div className="flex items-center justify-end gap-2.5 sm:gap-3.5 shrink-0">
+          {/* Dribbble-Inspired 3D Tactile Theme Switcher (Midnight Blueprint / Daylight Blueprint) */}
+          <ThemeTogglePill
+            isDark={isDark}
+            onToggle={toggleTheme}
+            showLabel={true}
+            size="md"
+          />
+
           {/* Compact borderless icon-only links on wide desktop where space allows */}
           <div
             aria-label="Social profiles"
-            className="hidden lg:flex items-center gap-1 pr-2 border-r border-[#A8DADC]"
+            className="hidden lg:flex items-center gap-1 pr-2 border-r border-[var(--border-subtle)]"
           >
             {VERIFIED_SOCIALS.map((social) => {
               const Icon = social.icon;
@@ -242,7 +253,7 @@ export function SiteHeader() {
                   rel="noopener noreferrer"
                   aria-label={`${social.label} profile`}
                   onClick={() => soundController.playSubtleTick(520)}
-                  className="inline-flex items-center justify-center w-8 h-8 text-[#457B9D] hover:text-[#E63946] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center justify-center w-8 h-8 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
@@ -250,15 +261,15 @@ export function SiteHeader() {
             })}
           </div>
 
-          {/* Primary CTA: LET'S TALK ↗ */}
+          {/* Primary Contact CTA: LET'S TALK ↗ in Punch Red (#E63946) with Honeydew (#F1FAEE) text */}
           <Magnetic strength={0.22}>
             <Link
               href="/#contact"
               onClick={(e) => handleAnchorClick(e, 'contact')}
-              className={`hidden sm:inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946] ${
+              className={`hidden sm:inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono font-semibold tracking-wider uppercase transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A8DADC] ${
                 activeSection === 'contact'
-                  ? 'bg-[#1D3557] text-[#F1FAEE]'
-                  : 'bg-[#E63946] text-[#F1FAEE] hover:bg-[#1D3557]'
+                  ? 'bg-[#A8DADC] text-[#0D1929]'
+                  : 'bg-[#E63946] text-[#F1FAEE] hover:bg-[#A8DADC] hover:text-[#0D1929]'
               }`}
             >
               <span>LET&apos;S TALK</span>
@@ -278,7 +289,7 @@ export function SiteHeader() {
             aria-label={
               mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'
             }
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 text-[#1D3557] border border-[#A8DADC] bg-white hover:border-[#E63946] hover:text-[#E63946] transition-colors cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 text-[var(--text-primary)] border border-[var(--border-strong)] bg-[var(--bg-surface)] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
           >
             {mobileMenuOpen ? (
               <X className="w-5 h-5" aria-hidden="true" />
@@ -304,10 +315,10 @@ export function SiteHeader() {
               reducedMotion ? { opacity: 0 } : { opacity: 0, y: -8 }
             }
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden bg-[#F1FAEE] border-b border-[#A8DADC] px-4 sm:px-6 pt-3 pb-6 shadow-[0_12px_32px_rgba(29,53,87,0.08)]"
+            className="md:hidden bg-[var(--bg-surface)] border-b border-[var(--border-subtle)] px-4 sm:px-6 pt-3 pb-6 shadow-[0_16px_40px_rgba(6,13,22,0.45)]"
           >
             <nav aria-label="Mobile navigation links" className="flex flex-col">
-              <div className="divide-y divide-[#A8DADC]/70">
+              <div className="divide-y divide-[var(--border-subtle)]">
                 {NAV_ITEMS.map((item, idx) => {
                   const isActive = activeSection === item.sectionId;
                   return (
@@ -318,8 +329,8 @@ export function SiteHeader() {
                       aria-current={isActive ? 'location' : undefined}
                       className={`flex items-center justify-between py-3.5 px-2 text-base font-display font-bold transition-colors ${
                         isActive
-                          ? 'text-[#E63946]'
-                          : 'text-[#1D3557] hover:text-[#E63946]'
+                          ? 'text-[var(--accent-primary)]'
+                          : 'text-[var(--text-primary)] hover:text-[#A8DADC]'
                       }`}
                     >
                       <span className="flex items-center gap-3">
@@ -329,7 +340,7 @@ export function SiteHeader() {
                         <span>{item.label}</span>
                       </span>
                       {isActive && (
-                        <span className="text-[11px] font-mono font-semibold text-[#E63946]">
+                        <span className="text-[11px] font-mono font-semibold text-[var(--accent-primary)]">
                           ACTIVE
                         </span>
                       )}
@@ -338,12 +349,32 @@ export function SiteHeader() {
                 })}
               </div>
 
+              {/* Theme Switcher Row inside Mobile Menu */}
+              <div className="pt-4 mt-2 border-t border-[var(--border-subtle)] flex items-center justify-between gap-4 px-2">
+                <div className="flex flex-col">
+                  <span className="text-xs font-mono text-[var(--text-secondary)]">
+                    COLOR APPEARANCE
+                  </span>
+                  <span className="text-xs font-display font-bold text-[var(--text-primary)] mt-0.5">
+                    {theme === 'dark'
+                      ? 'Midnight Blueprint (Dark)'
+                      : 'Daylight Blueprint (Light)'}
+                  </span>
+                </div>
+                <ThemeTogglePill
+                  isDark={isDark}
+                  onToggle={toggleTheme}
+                  showLabel={false}
+                  size="sm"
+                />
+              </div>
+
               {/* Primary Mobile CTA */}
-              <div className="pt-4 mt-2 border-t border-[#A8DADC]">
+              <div className="pt-4 mt-3 border-t border-[var(--border-subtle)]">
                 <Link
                   href="/#contact"
                   onClick={(e) => handleAnchorClick(e, 'contact')}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 text-xs font-mono font-semibold tracking-wider uppercase bg-[#E63946] text-[#F1FAEE] hover:bg-[#1D3557] transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 text-xs font-mono font-semibold tracking-wider uppercase bg-[#E63946] text-[#F1FAEE] hover:bg-[#A8DADC] hover:text-[#0D1929] transition-colors"
                 >
                   <span>LET&apos;S TALK</span>
                   <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
@@ -351,8 +382,8 @@ export function SiteHeader() {
               </div>
 
               {/* Clean Unboxed Social Row in Mobile Menu */}
-              <div className="pt-4 mt-4 border-t border-[#A8DADC]/70 flex items-center justify-between gap-4">
-                <span className="text-[11px] font-mono text-[#457B9D]">
+              <div className="pt-4 mt-4 border-t border-[var(--border-subtle)] flex items-center justify-between gap-4">
+                <span className="text-[11px] font-mono text-[var(--text-secondary)]">
                   CONNECT
                 </span>
                 <div className="flex items-center gap-4">
@@ -366,7 +397,7 @@ export function SiteHeader() {
                         rel="noopener noreferrer"
                         aria-label={social.label}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-[#1D3557] hover:text-[#E63946] transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-primary)] hover:text-[#A8DADC] transition-colors"
                       >
                         <Icon className="w-4 h-4" aria-hidden="true" />
                         <span>{social.label}</span>
@@ -377,7 +408,7 @@ export function SiteHeader() {
                     href={`mailto:${profileData.contact.email}`}
                     aria-label="Email Dirisham Kamesh"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#1D3557] hover:text-[#E63946] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-primary)] hover:text-[#A8DADC] transition-colors"
                   >
                     <Mail className="w-4 h-4" aria-hidden="true" />
                     <span>Email</span>

@@ -67,10 +67,10 @@ export function CustomCursor() {
       <div
         className={`flex items-center justify-center transition-transform duration-150 ease-out ${
           hoverLabel
-            ? 'px-2.5 py-1 bg-[#E63946] text-[#F1FAEE] text-[11px] font-mono font-semibold tracking-tight shadow-sm'
+            ? 'px-2.5 py-1 bg-[#A8DADC] text-[#0D1929] text-[11px] font-mono font-semibold tracking-tight shadow-sm'
             : isInteractive
-              ? 'w-7 h-7 rounded-full border-2 border-[#E63946] bg-[#A8DADC]/35 scale-110'
-              : 'w-3.5 h-3.5 rounded-full border-2 border-[#1D3557]/80 bg-[#F1FAEE]/50'
+              ? 'w-7 h-7 rounded-full border-2 border-[#A8DADC] bg-[#457B9D]/30 scale-110'
+              : 'w-3.5 h-3.5 rounded-full border-2 border-[#A8DADC]/80 bg-[#0D1929]/60'
         }`}
       >
         {hoverLabel ? <span>{hoverLabel}</span> : null}

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useReducedMotionPref } from '@/hooks/useReducedMotionPref';
+import { useTheme } from '@/hooks/useTheme';
 
 interface DKMonogramProps {
   size?: 'sm' | 'md' | 'hero';
@@ -11,6 +12,7 @@ interface DKMonogramProps {
 
 export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
   const reducedMotion = useReducedMotionPref();
+  const { isDark } = useTheme();
   const [pointerOffset, setPointerOffset] = useState({ x: 0, y: 0 });
   const [activeLayer, setActiveLayer] = useState<'geometry' | 'grid' | 'vectors'>('geometry');
 
@@ -18,13 +20,13 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
     const dimensions = size === 'sm' ? 'w-8 h-8' : 'w-11 h-11';
     return (
       <span
-        className={`inline-flex items-center justify-center bg-[#F1FAEE] border border-[#457B9D] ${dimensions} shrink-0 select-none ${className}`}
+        className={`inline-flex items-center justify-center bg-[var(--bg-canvas)] border border-[#457B9D] ${dimensions} shrink-0 select-none ${className}`}
         aria-hidden="true"
       >
         <svg viewBox="0 0 64 64" fill="none" className="w-full h-full p-1">
           <path
             d="M12 14H24C31.732 14 38 20.268 38 28V36C38 43.732 31.732 50 24 50H12V14Z"
-            stroke="#1D3557"
+            stroke={isDark ? '#A8DADC' : '#1D3557'}
             strokeWidth="4.5"
           />
           <path d="M38 14V50" stroke="#E63946" strokeWidth="4.5" />
@@ -51,29 +53,40 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
     setPointerOffset({ x: 0, y: 0 });
   };
 
+  const frameFill = isDark ? '#0D1929' : '#F1FAEE';
+  const dStroke = isDark ? '#F1FAEE' : '#1D3557';
+  const dFill = isDark ? '#457B9D' : '#A8DADC';
+
   return (
     <div
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className={`relative w-full h-full min-h-[360px] lg:min-h-[460px] bg-white border border-[#A8DADC] flex flex-col justify-between p-6 sm:p-8 overflow-hidden select-none shadow-[0_8px_30px_rgba(29,53,87,0.06)] ${className}`}
+      className={`relative w-full h-full min-h-[360px] lg:min-h-[460px] bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between p-6 sm:p-8 overflow-hidden select-none shadow-[0_12px_36px_rgba(6,13,22,0.28)] transition-colors duration-300 ${className}`}
     >
-      {/* Subtle Frosted Blue architectural coordinate grid */}
+      {/* Subtle Cerulean / Frosted Blue architectural coordinate grid */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-65"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-45"
         aria-hidden="true"
       >
         <defs>
           <pattern id="dk-hero-grid" width="48" height="48" patternUnits="userSpaceOnUse">
-            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#A8DADC" strokeWidth="1" />
+            <path
+              d="M 48 0 L 0 0 0 48"
+              fill="none"
+              stroke={isDark ? '#243E5C' : '#A8DADC'}
+              strokeWidth="1"
+            />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#dk-hero-grid)" />
       </svg>
 
       {/* Top row: Monogram identity metadata */}
-      <div className="relative z-10 flex items-center justify-between gap-4 text-xs font-mono text-[#457B9D] border-b border-[#A8DADC] pb-4">
-        <span className="font-semibold text-[#1D3557]">IDENTITY MONOGRAM · DK-29</span>
-        <span className="tabular-nums">17.6868° N · 83.2185° E</span>
+      <div className="relative z-10 flex items-center justify-between gap-4 text-xs font-mono text-[var(--text-secondary)] border-b border-[var(--border-subtle)] pb-4">
+        <span className="font-semibold text-[var(--text-primary)]">
+          IDENTITY MONOGRAM · DK-29
+        </span>
+        <span className="tabular-nums text-[var(--text-secondary)]">17.6868° N · 83.2185° E</span>
       </div>
 
       {/* Center Interactive Architectural Monogram Sculpture */}
@@ -96,13 +109,13 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
             role="img"
             aria-label="Dirisham Kamesh architectural DK monogram blueprint artwork"
           >
-            {/* Outer architectural blueprint frame in Honeydew & Cerulean */}
+            {/* Outer architectural blueprint frame */}
             <rect
               x="16"
               y="16"
               width="248"
               height="248"
-              fill="#F1FAEE"
+              fill={frameFill}
               stroke="#457B9D"
               strokeWidth="2"
             />
@@ -122,12 +135,12 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
               </g>
             )}
 
-            {/* Sculptural D in Oxford Navy */}
+            {/* Sculptural D in Honeydew (Dark) / Oxford Navy (Light) */}
             <motion.path
               d="M58 66H108C143.346 66 172 94.6538 172 130V150C172 185.346 143.346 214 108 214H58V66Z"
-              fill={activeLayer === 'geometry' ? '#A8DADC' : 'none'}
+              fill={activeLayer === 'geometry' ? dFill : 'none'}
               fillOpacity={activeLayer === 'geometry' ? 0.35 : 0}
-              stroke="#1D3557"
+              stroke={dStroke}
               strokeWidth="10"
               initial={reducedMotion ? false : { pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
@@ -141,8 +154,8 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
               width="34"
               height="96"
               rx="17"
-              fill="#F1FAEE"
-              stroke="#457B9D"
+              fill={frameFill}
+              stroke="#A8DADC"
               strokeWidth="2"
             />
 
@@ -171,7 +184,7 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
 
             {/* Vertex anchor nodes when vectors layer is active */}
             {activeLayer === 'vectors' && (
-              <g fill="#E63946" stroke="#1D3557" strokeWidth="1.5">
+              <g fill="#A8DADC" stroke="#0D1929" strokeWidth="1.5">
                 <rect x="53" y="61" width="10" height="10" />
                 <rect x="53" y="209" width="10" height="10" />
                 <rect x="167" y="55" width="10" height="10" />
@@ -185,12 +198,12 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
       </div>
 
       {/* Interactive Layer Switcher — functional controls */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#A8DADC]">
-        <span className="text-xs font-mono text-[#457B9D]">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[var(--border-subtle)]">
+        <span className="text-xs font-mono text-[var(--text-secondary)]">
           VIEWPORT LAYER
         </span>
         <div
-          className="inline-flex items-center bg-[#F1FAEE] p-1 border border-[#A8DADC]"
+          className="inline-flex items-center bg-[var(--bg-canvas)] p-1 border border-[var(--border-subtle)]"
           role="group"
           aria-label="Switch monogram construction layer"
         >
@@ -202,7 +215,7 @@ export function DKMonogram({ size = 'sm', className = '' }: DKMonogramProps) {
               className={`px-2.5 py-1 text-xs font-mono transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeLayer === layer
                   ? 'bg-[#E63946] text-[#F1FAEE] font-semibold'
-                  : 'text-[#457B9D] hover:text-[#1D3557]'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
               {layer === 'geometry'

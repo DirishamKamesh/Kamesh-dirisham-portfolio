@@ -39,15 +39,15 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative bg-[#F1FAEE] border-b border-[#A8DADC] overflow-hidden"
+      className="relative bg-[var(--bg-canvas)] border-b border-[var(--border-subtle)] overflow-hidden transition-colors duration-300"
     >
-      {/* Restrained, Subtle Background Grid (Stronger grids live inside DKMonogram & ProjectVisual) */}
+      {/* Restrained, Subtle Background Blueprint Grid */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-15"
+        className="pointer-events-none absolute inset-0 opacity-20"
         style={{
           backgroundImage:
-            'linear-gradient(to right, #A8DADC 1px, transparent 1px), linear-gradient(to bottom, #A8DADC 1px, transparent 1px)',
+            'linear-gradient(to right, var(--grid-stroke) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-stroke) 1px, transparent 1px)',
           backgroundSize: '64px 64px',
         }}
       />
@@ -55,18 +55,18 @@ export function HeroSection() {
       <div className="relative max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10 pt-10 sm:pt-14 pb-14 sm:pb-20">
         {/* Top Architectural Registration Axis */}
         <div className="mb-8 space-y-2">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#457B9D]">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[var(--text-secondary)]">
             <span>PORTFOLIO · FRONTEND &amp; UI ENGINEERING</span>
-            <span className="tabular-nums text-[#1D3557] font-semibold">
+            <span className="tabular-nums text-[var(--text-primary)] font-semibold">
               VIGNAN, DUVVADA · B.TECH CSE &apos;29
             </span>
           </div>
-          <div className="relative h-[1px] w-full bg-[#A8DADC] overflow-hidden">
+          <div className="relative h-[1px] w-full bg-[var(--border-subtle)] overflow-hidden">
             <motion.div
               initial={reducedMotion ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="origin-left h-full w-full bg-[#1D3557]"
+              className="origin-left h-full w-full bg-[#457B9D]"
             />
           </div>
         </div>
@@ -93,14 +93,18 @@ export function HeroSection() {
                   filter: 'blur(0px)',
                 }}
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#457B9D]"
+                className="flex flex-wrap items-center gap-2 text-xs font-mono text-[var(--text-secondary)]"
               >
                 <span className="text-[#E63946] font-semibold">
                   {profileData.roleTitle}
                 </span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true" className="text-[#457B9D]">
+                  ·
+                </span>
                 <span>Visakhapatnam, India</span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true" className="text-[#457B9D]">
+                  ·
+                </span>
                 <span>Internships &amp; Select Freelance</span>
               </motion.div>
 
@@ -152,7 +156,7 @@ export function HeroSection() {
                       className={`block font-display font-extrabold tracking-[-0.03em] leading-[0.98] transition-colors duration-200 ${
                         activeNameLine === 'first'
                           ? 'text-[#E63946]'
-                          : 'text-[#1D3557]'
+                          : 'text-[var(--text-primary)]'
                       }`}
                     >
                       DIRISHAM
@@ -200,7 +204,7 @@ export function HeroSection() {
                       }}
                       className={`inline-block font-display font-extrabold tracking-[-0.03em] leading-[0.98] transition-colors duration-200 ${
                         activeNameLine === 'last'
-                          ? 'text-[#1D3557]'
+                          ? 'text-[var(--text-primary)]'
                           : 'text-[#E63946]'
                       }`}
                     >
@@ -211,7 +215,7 @@ export function HeroSection() {
 
                 {/* Secondary Editorial Statement in Syne */}
                 <p
-                  className="font-display font-bold text-[#1D3557] tracking-tight leading-[1.22] pt-2 text-balance max-w-[34ch]"
+                  className="font-display font-bold text-[var(--text-primary)] tracking-tight leading-[1.22] pt-2 text-balance max-w-[34ch]"
                   style={{ fontSize: 'clamp(1.25rem, 2.1vw, 1.85rem)' }}
                 >
                   {STATEMENT_SEGMENTS.map((seg, idx) => (
@@ -242,7 +246,9 @@ export function HeroSection() {
                           ease: [0.16, 1, 0.3, 1],
                         }}
                         className={`inline-block ${
-                          seg.accent ? 'text-[#E63946]' : 'text-[#1D3557]'
+                          seg.accent
+                            ? 'text-[#E63946]'
+                            : 'text-[var(--text-primary)]'
                         }`}
                       >
                         {seg.text}
@@ -265,7 +271,7 @@ export function HeroSection() {
                   delay: 0.32,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="text-base sm:text-lg text-[#1D3557]/85 leading-relaxed max-w-[62ch]"
+                className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-[62ch]"
               >
                 {profileData.heroSupportingCopy}
               </motion.p>
@@ -287,22 +293,24 @@ export function HeroSection() {
               className="pt-2 space-y-6"
             >
               <div className="flex flex-wrap items-center gap-3.5">
+                {/* Primary Button: Punch Red (#E63946) with Honeydew (#F1FAEE) text */}
                 <Magnetic strength={0.22}>
                   <Link
                     href="#work"
                     onClick={() => soundController.playSubtleTick(620)}
-                    className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[#1D3557] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946]"
+                    className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-fg)] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946]"
                   >
                     <span>Explore selected work</span>
                     <ArrowDownRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </Magnetic>
 
+                {/* Secondary Outlined Button: Discuss a project */}
                 <Magnetic strength={0.2}>
                   <Link
                     href="#contact"
                     onClick={() => soundController.playSubtleTick(540)}
-                    className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold bg-white text-[#1D3557] border border-[#457B9D] hover:border-[#E63946] hover:text-[#E63946] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946]"
+                    className="inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold border border-[var(--border-strong)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[#E63946] hover:text-[#E63946] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946]"
                   >
                     <span>Discuss a project</span>
                   </Link>
@@ -310,8 +318,8 @@ export function HeroSection() {
               </div>
 
               {/* Verified Social & Direct Contact Strip */}
-              <div className="pt-4 border-t border-[#A8DADC] flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs font-mono">
-                <span className="font-semibold text-[#1D3557]">
+              <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs font-mono">
+                <span className="font-semibold text-[var(--text-primary)]">
                   DIRECT PROFILES:
                 </span>
 
@@ -320,14 +328,14 @@ export function HeroSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundController.playSubtleTick(520)}
-                  className="inline-flex items-center gap-1.5 text-[#457B9D] hover:text-[#E63946] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
-                  <Github className="w-3.5 h-3.5 text-[#1D3557]" aria-hidden="true" />
+                  <Github className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
                   <span>@{profileData.contact.githubUsername}</span>
                   <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                 </a>
 
-                <span aria-hidden="true" className="text-[#A8DADC]">
+                <span aria-hidden="true" className="text-[#457B9D]">
                   /
                 </span>
 
@@ -336,14 +344,14 @@ export function HeroSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundController.playSubtleTick(520)}
-                  className="inline-flex items-center gap-1.5 text-[#457B9D] hover:text-[#E63946] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
-                  <Linkedin className="w-3.5 h-3.5 text-[#1D3557]" aria-hidden="true" />
+                  <Linkedin className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
                   <span>{profileData.contact.linkedinHandle}</span>
                   <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                 </a>
 
-                <span aria-hidden="true" className="text-[#A8DADC]">
+                <span aria-hidden="true" className="text-[#457B9D]">
                   /
                 </span>
 
@@ -352,23 +360,23 @@ export function HeroSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundController.playSubtleTick(520)}
-                  className="inline-flex items-center gap-1.5 text-[#457B9D] hover:text-[#E63946] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
                   <Instagram className="w-3.5 h-3.5 text-[#E63946]" aria-hidden="true" />
                   <span>@{profileData.contact.instagramHandle}</span>
                   <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                 </a>
 
-                <span aria-hidden="true" className="text-[#A8DADC]">
+                <span aria-hidden="true" className="text-[#457B9D]">
                   /
                 </span>
 
                 <a
                   href={`mailto:${profileData.contact.email}`}
                   onClick={() => soundController.playSubtleTick(520)}
-                  className="inline-flex items-center gap-1.5 text-[#457B9D] hover:text-[#E63946] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                  className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                 >
-                  <Mail className="w-3.5 h-3.5 text-[#1D3557]" aria-hidden="true" />
+                  <Mail className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
                   <span>{profileData.contact.email}</span>
                 </a>
               </div>
@@ -405,57 +413,59 @@ export function HeroSection() {
         </div>
 
         {/* Full-Width Verified Coordinates Row Below the Hero Split */}
-        <div className="mt-10 pt-8 border-t border-[#A8DADC] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-10 pt-8 border-t border-[var(--border-subtle)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="space-y-1">
             <p className="text-xs font-mono text-[#457B9D]">01. EDUCATION</p>
-            <p className="text-sm font-semibold text-[#1D3557] tabular-nums">
+            <p className="text-sm font-semibold text-[var(--text-primary)] tabular-nums">
               B.Tech CSE · Vignan, Duvvada (&apos;29)
             </p>
-            <p className="text-xs text-[#457B9D]">Second-year undergraduate</p>
+            <p className="text-xs text-[var(--text-secondary)]">
+              Second-year undergraduate
+            </p>
           </div>
 
           <div className="space-y-1">
             <p className="text-xs font-mono text-[#457B9D]">02. LOCATION</p>
-            <p className="text-sm font-semibold text-[#1D3557]">
+            <p className="text-sm font-semibold text-[var(--text-primary)]">
               Visakhapatnam (Vizag), India
             </p>
-            <p className="text-xs text-[#457B9D]">
+            <p className="text-xs text-[var(--text-secondary)]">
               Andhra Pradesh · Remote &amp; Hybrid
             </p>
           </div>
 
           <div className="space-y-1">
             <p className="text-xs font-mono text-[#457B9D]">03. CORE STACK</p>
-            <p className="text-sm font-semibold text-[#1D3557]">
+            <p className="text-sm font-semibold text-[#E63946]">
               React 19 · TypeScript · Python/Flask
             </p>
-            <p className="text-xs text-[#457B9D]">
+            <p className="text-xs text-[var(--text-secondary)]">
               Tailwind CSS, @xyflow/react, Recharts
             </p>
           </div>
 
           <div className="space-y-1">
             <p className="text-xs font-mono text-[#457B9D]">04. AVAILABILITY</p>
-            <p className="text-sm font-semibold text-[#E63946]">
+            <p className="text-sm font-semibold text-[var(--text-primary)]">
               Internships &amp; Select Freelance
             </p>
-            <p className="text-xs text-[#457B9D]">
+            <p className="text-xs text-[var(--text-secondary)]">
               Public GitHub repos &amp; UI simulations
             </p>
           </div>
         </div>
       </div>
 
-      {/* Subtle Editorial Ribbon Divider in Frosted Blue */}
+      {/* Subtle Editorial Ribbon Divider */}
       <div
         aria-hidden="true"
-        className="relative border-t border-[#A8DADC] bg-[#A8DADC]/30 py-3 px-4 overflow-hidden"
+        className="relative border-t border-[var(--border-subtle)] bg-[var(--bg-surface)] py-3 px-4 overflow-hidden"
       >
-        <div className="max-w-[1360px] mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#1D3557]">
+        <div className="max-w-[1360px] mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[var(--text-primary)]">
           <span className="font-semibold">
             01 REPO-RIDDLE (FLAGSHIP) · 02 CARESYNC · 03 FACULYNK · 04 READY-MAP
           </span>
-          <span className="hidden sm:inline text-[#457B9D]">
+          <span className="hidden sm:inline text-[var(--text-secondary)]">
             PUBLIC REPOSITORIES · INTERACTIVE UI SIMULATIONS
           </span>
           <span className="text-[#E63946] font-semibold tabular-nums">

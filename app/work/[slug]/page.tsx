@@ -61,7 +61,7 @@ export default async function ProjectCaseStudyPage({ params }: WorkPageProps) {
   const { prev, next } = getAdjacentProjects(project.slug);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F1FAEE] text-[#1D3557]">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-canvas)] text-[var(--text-primary)]">
       <SiteHeader />
       <ProjectDetailView project={project} prevProject={prev} nextProject={next} />
       <SiteFooter />

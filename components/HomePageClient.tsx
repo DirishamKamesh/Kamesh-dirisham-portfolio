@@ -12,15 +12,23 @@ export function HomePageClient() {
   const [selectedService, setSelectedService] = useState<string>('');
 
   return (
-    <main id="main-content" className="min-h-screen bg-[#F1FAEE] text-[#1D3557]">
+    <main
+      id="main-content"
+      className="min-h-screen bg-[var(--bg-canvas)] text-[var(--text-primary)]"
+    >
       <HeroSection />
       <SelectedWorkSection />
       <ServicesSection
-        onSelectServiceForInquiry={(serviceTitle) => setSelectedService(serviceTitle)}
+        onSelectServiceForInquiry={(serviceTitle) =>
+          setSelectedService(serviceTitle)
+        }
       />
       <SkillsSection />
       <AboutAndProcessSection />
-      <ContactSection key={selectedService} preselectedService={selectedService} />
+      <ContactSection
+        key={selectedService}
+        preselectedService={selectedService}
+      />
     </main>
   );
 }

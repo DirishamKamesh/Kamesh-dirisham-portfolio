@@ -91,7 +91,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="bg-[#F1FAEE] py-20 sm:py-28 scroll-mt-20"
+      className="bg-[var(--bg-canvas)] py-20 sm:py-28 scroll-mt-20 transition-colors duration-300"
     >
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -99,15 +99,15 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <p className="text-xs font-mono font-semibold text-[#E63946] tracking-wide">
-                06. CONTACT & DIRECT INQUIRY
+                06. CONTACT &amp; DIRECT INQUIRY
               </p>
               <h2
                 id="contact-heading"
-                className="font-display text-3xl sm:text-5xl font-bold text-[#1D3557] tracking-tight leading-[1.08] text-balance"
+                className="font-display text-3xl sm:text-5xl font-bold text-[var(--text-primary)] tracking-tight leading-[1.08] text-balance"
               >
                 Have a problem worth building something for?
               </h2>
-              <p className="text-sm sm:text-base text-[#457B9D] leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
                 Whether you are an engineering recruiter evaluating internship candidates,
                 a founder needing a responsive frontend, or a developer looking to collaborate—reach
                 out directly via email or LinkedIn.
@@ -115,11 +115,11 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
             </div>
 
             {/* Verified Primary Email Card */}
-            <div className="bg-white border border-[#A8DADC] p-6 space-y-4 shadow-[0_6px_24px_rgba(29,53,87,0.04)]">
+            <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-4 shadow-[0_8px_28px_rgba(6,13,22,0.22)]">
               <p className="text-xs font-mono text-[#457B9D]">PRIMARY EMAIL ADDRESS</p>
               <a
                 href={`mailto:${profileData.contact.email}`}
-                className="block font-mono text-base sm:text-lg font-bold text-[#E63946] hover:underline underline-offset-4 break-all"
+                className="block font-mono text-base sm:text-lg font-bold text-[#A8DADC] hover:underline underline-offset-4 break-all"
               >
                 {profileData.contact.email}
               </a>
@@ -128,7 +128,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                 <a
                   href={`mailto:${profileData.contact.email}`}
                   onClick={() => soundController.playSubtleTick(580)}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[#1D3557] transition-colors whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-fg)] transition-colors whitespace-nowrap shrink-0"
                 >
                   <Mail className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Open Email App</span>
@@ -137,12 +137,12 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono bg-[#F1FAEE] text-[#1D3557] border border-[#457B9D] hover:border-[#E63946] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[#457B9D] hover:border-[#A8DADC] transition-colors cursor-pointer whitespace-nowrap shrink-0"
                 >
                   {emailCopied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-[#E63946]" aria-hidden="true" />
-                      <span className="text-[#E63946] font-semibold">Copied Address</span>
+                      <Check className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
+                      <span className="text-[#A8DADC] font-semibold">Copied Address</span>
                     </>
                   ) : (
                     <>
@@ -155,64 +155,66 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
             </div>
 
             {/* Verified Social Profiles */}
-            <div className="bg-white border border-[#A8DADC] divide-y divide-[#A8DADC] shadow-[0_6px_24px_rgba(29,53,87,0.04)]">
+            <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] divide-y divide-[var(--border-subtle)] shadow-[0_8px_28px_rgba(6,13,22,0.22)]">
               <a
                 href={profileData.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 flex items-center justify-between hover:bg-[#F1FAEE] transition-colors group"
+                className="p-5 flex items-center justify-between hover:bg-[var(--bg-elevated)] transition-colors group"
               >
                 <div>
                   <p className="text-xs font-mono text-[#457B9D]">GITHUB REPOSITORIES</p>
-                  <p className="text-sm font-semibold text-[#1D3557] group-hover:text-[#E63946] transition-colors mt-0.5">
+                  <p className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors mt-0.5">
                     github.com/DirishamKamesh
                   </p>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#457B9D] group-hover:text-[#E63946]" aria-hidden="true" />
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[#A8DADC]" aria-hidden="true" />
               </a>
 
               <a
                 href={profileData.contact.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 flex items-center justify-between hover:bg-[#F1FAEE] transition-colors group"
+                className="p-5 flex items-center justify-between hover:bg-[var(--bg-elevated)] transition-colors group"
               >
                 <div>
                   <p className="text-xs font-mono text-[#457B9D]">PROFESSIONAL NETWORK</p>
-                  <p className="text-sm font-semibold text-[#1D3557] group-hover:text-[#E63946] transition-colors mt-0.5">
+                  <p className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors mt-0.5">
                     linkedin.com/in/dirishamkamesh
                   </p>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#457B9D] group-hover:text-[#E63946]" aria-hidden="true" />
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[#A8DADC]" aria-hidden="true" />
               </a>
 
               <a
                 href={profileData.contact.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 flex items-center justify-between hover:bg-[#F1FAEE] transition-colors group"
+                className="p-5 flex items-center justify-between hover:bg-[var(--bg-elevated)] transition-colors group"
               >
                 <div>
-                  <p className="text-xs font-mono text-[#457B9D]">INSTAGRAM (@{profileData.contact.instagramHandle})</p>
-                  <p className="text-sm font-semibold text-[#1D3557] group-hover:text-[#E63946] transition-colors mt-0.5">
+                  <p className="text-xs font-mono text-[#457B9D]">
+                    INSTAGRAM (@{profileData.contact.instagramHandle})
+                  </p>
+                  <p className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors mt-0.5">
                     instagram.com/{profileData.contact.instagramHandle}
                   </p>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#457B9D] group-hover:text-[#E63946]" aria-hidden="true" />
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[#A8DADC]" aria-hidden="true" />
               </a>
             </div>
           </div>
 
           {/* Right Column: Validated Inquiry Composer with Transparent Mailto Action */}
-          <div className="lg:col-span-7 bg-white border border-[#A8DADC] p-6 sm:p-10 space-y-6 shadow-[0_8px_30px_rgba(29,53,87,0.05)]">
-            <div className="border-b border-[#A8DADC] pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="lg:col-span-7 bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 sm:p-10 space-y-6 shadow-[0_12px_36px_rgba(6,13,22,0.28)]">
+            <div className="border-b border-[var(--border-subtle)] pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-[#1D3557]">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--text-primary)]">
                   Prepare a structured inquiry
                 </h3>
-                <p className="text-xs text-[#457B9D] mt-1">
+                <p className="text-xs text-[var(--text-secondary)] mt-1">
                   Validates your details and prepares a formatted message directly for{' '}
-                  <span className="font-mono font-semibold text-[#1D3557]">
+                  <span className="font-mono font-semibold text-[#A8DADC]">
                     {profileData.contact.email}
                   </span>
                   .
@@ -226,7 +228,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
               {/* Inquiry Type Selector */}
               <div className="space-y-2">
-                <label className="block text-xs font-mono font-semibold text-[#1D3557]">
+                <label className="block text-xs font-mono font-semibold text-[var(--text-primary)]">
                   INQUIRY CATEGORY
                 </label>
                 <div
@@ -246,8 +248,8 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                         }}
                         className={`py-2.5 px-3.5 text-left text-xs font-medium border transition-colors cursor-pointer ${
                           active
-                            ? 'bg-[#E63946] text-[#F1FAEE] border-[#E63946] font-semibold'
-                            : 'bg-[#F1FAEE] text-[#1D3557] border-[#A8DADC] hover:border-[#457B9D]'
+                            ? 'bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] border-[var(--accent-primary)] font-semibold'
+                            : 'bg-[var(--bg-canvas)] text-[var(--text-primary)] border-[var(--border-subtle)] hover:border-[#457B9D]'
                         }`}
                       >
                         {type}
@@ -262,7 +264,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                 <div className="space-y-1.5">
                   <label
                     htmlFor="inquiry-name"
-                    className="block text-xs font-mono font-semibold text-[#1D3557]"
+                    className="block text-xs font-mono font-semibold text-[var(--text-primary)]"
                   >
                     YOUR NAME <span className="text-[#E63946]">*</span>
                   </label>
@@ -279,7 +281,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                     placeholder="e.g. Priya Sharma"
                     aria-invalid={Boolean(errors.name)}
                     aria-describedby={errors.name ? 'inquiry-name-error' : undefined}
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#F1FAEE] border border-[#457B9D] text-[#1D3557] placeholder:text-[#457B9D]/60 focus:border-[#E63946] focus:outline-none"
+                    className="w-full px-3.5 py-2.5 text-sm bg-[var(--bg-canvas)] border border-[#457B9D] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:border-[#A8DADC] focus:outline-none"
                   />
                   {errors.name && (
                     <p id="inquiry-name-error" role="alert" className="text-xs font-medium text-[#E63946]">
@@ -291,7 +293,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                 <div className="space-y-1.5">
                   <label
                     htmlFor="inquiry-email"
-                    className="block text-xs font-mono font-semibold text-[#1D3557]"
+                    className="block text-xs font-mono font-semibold text-[var(--text-primary)]"
                   >
                     YOUR EMAIL <span className="text-[#E63946]">*</span>
                   </label>
@@ -308,7 +310,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                     placeholder="name@company.com"
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? 'inquiry-email-error' : undefined}
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#F1FAEE] border border-[#457B9D] text-[#1D3557] placeholder:text-[#457B9D]/60 focus:border-[#E63946] focus:outline-none"
+                    className="w-full px-3.5 py-2.5 text-sm bg-[var(--bg-canvas)] border border-[#457B9D] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:border-[#A8DADC] focus:outline-none"
                   />
                   {errors.email && (
                     <p id="inquiry-email-error" role="alert" className="text-xs font-medium text-[#E63946]">
@@ -323,7 +325,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                 <div className="space-y-1.5">
                   <label
                     htmlFor="inquiry-org"
-                    className="block text-xs font-mono text-[#457B9D]"
+                    className="block text-xs font-mono text-[var(--text-secondary)]"
                   >
                     COMPANY / TEAM (OPTIONAL)
                   </label>
@@ -339,14 +341,14 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                       }))
                     }
                     placeholder="Organization or project name"
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#F1FAEE] border border-[#457B9D] text-[#1D3557] placeholder:text-[#457B9D]/60 focus:border-[#E63946] focus:outline-none"
+                    className="w-full px-3.5 py-2.5 text-sm bg-[var(--bg-canvas)] border border-[#457B9D] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:border-[#A8DADC] focus:outline-none"
                   />
                 </div>
 
                 <div className="space-y-1.5">
                   <label
                     htmlFor="inquiry-service"
-                    className="block text-xs font-mono text-[#457B9D]"
+                    className="block text-xs font-mono text-[var(--text-secondary)]"
                   >
                     CAPABILITY FOCUS (OPTIONAL)
                   </label>
@@ -360,7 +362,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                         serviceInterest: e.target.value,
                       }))
                     }
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#F1FAEE] border border-[#457B9D] text-[#1D3557] focus:border-[#E63946] focus:outline-none"
+                    className="w-full px-3.5 py-2.5 text-sm bg-[var(--bg-canvas)] border border-[#457B9D] text-[var(--text-primary)] focus:border-[#A8DADC] focus:outline-none"
                   >
                     <option value="">General / Not specific</option>
                     {servicesData.map((srv) => (
@@ -376,7 +378,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
               <div className="space-y-1.5">
                 <label
                   htmlFor="inquiry-message"
-                  className="block text-xs font-mono font-semibold text-[#1D3557]"
+                  className="block text-xs font-mono font-semibold text-[var(--text-primary)]"
                 >
                   PROJECT DETAILS OR ROLE SUMMARY <span className="text-[#E63946]">*</span>
                 </label>
@@ -393,7 +395,7 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                   placeholder="Share context on your project goals, internship role, or timeline..."
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? 'inquiry-message-error' : undefined}
-                  className="w-full px-3.5 py-2.5 text-sm bg-[#F1FAEE] border border-[#457B9D] text-[#1D3557] placeholder:text-[#457B9D]/60 focus:border-[#E63946] focus:outline-none resize-y"
+                  className="w-full px-3.5 py-2.5 text-sm bg-[var(--bg-canvas)] border border-[#457B9D] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:border-[#A8DADC] focus:outline-none resize-y"
                 />
                 {errors.message && (
                   <p id="inquiry-message-error" role="alert" className="text-xs font-medium text-[#E63946]">
@@ -402,21 +404,25 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                 )}
               </div>
 
+              {/* Contact CTA in Punch Red (#E63946) with Honeydew (#F1FAEE) text */}
               <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <Magnetic strength={0.22}>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[#1D3557] transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E63946]"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-fg)] transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
                   >
                     <Send className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Prepare & Open in Email App</span>
+                    <span>Prepare &amp; Open in Email App</span>
                   </button>
                 </Magnetic>
 
-                <p className="text-xs text-[#457B9D] leading-relaxed">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   No backend database stores your message—this opens your email client with a
                   pre-addressed draft to{' '}
-                  <span className="font-semibold text-[#1D3557]">kameshdirisham@gmail.com</span>.
+                  <span className="font-semibold text-[var(--text-primary)]">
+                    kameshdirisham@gmail.com
+                  </span>
+                  .
                 </p>
               </div>
             </form>
@@ -426,30 +432,30 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
               <div
                 role="status"
                 aria-live="polite"
-                className="mt-6 p-5 bg-[#F1FAEE] border-2 border-[#E63946] space-y-4"
+                className="mt-6 p-5 bg-[var(--bg-canvas)] border-2 border-[#A8DADC] space-y-4"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-xs font-mono font-semibold text-[#E63946]">
+                  <p className="text-xs font-mono font-semibold text-[#A8DADC]">
                     EMAIL DRAFT PREPARED · READY TO SEND IN YOUR MAIL CLIENT
                   </p>
                   <a
                     href={preparedMail.mailtoHref}
-                    className="text-xs font-mono font-semibold text-[#1D3557] underline underline-offset-4 hover:text-[#E63946]"
+                    className="text-xs font-mono font-semibold text-[#E63946] underline underline-offset-4 hover:text-[#A8DADC]"
                   >
                     Re-open mailto link
                   </a>
                 </div>
 
-                <p className="text-xs text-[#457B9D] leading-relaxed">
+                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   Your default email application was triggered. If your browser does not have a
                   configured mail handler, copy the formatted message below and send it to{' '}
-                  <span className="font-mono font-semibold text-[#1D3557]">
+                  <span className="font-mono font-semibold text-[var(--text-primary)]">
                     {profileData.contact.email}
                   </span>
                   .
                 </p>
 
-                <pre className="p-3 bg-white border border-[#A8DADC] text-xs font-mono text-[#1D3557] overflow-x-auto whitespace-pre-wrap">
+                <pre className="p-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-primary)] overflow-x-auto whitespace-pre-wrap">
                   {`Subject: ${preparedMail.subject}\n\n${preparedMail.bodyText}`}
                 </pre>
 
@@ -457,12 +463,12 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
                   <button
                     type="button"
                     onClick={handleCopyFormattedDraft}
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono bg-white text-[#1D3557] border border-[#457B9D] hover:border-[#E63946] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono bg-[var(--bg-surface)] text-[var(--text-primary)] border border-[#457B9D] hover:border-[#A8DADC] transition-colors cursor-pointer"
                   >
                     {messageCopied ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-[#E63946]" aria-hidden="true" />
-                        <span className="text-[#E63946] font-semibold">Copied Full Message</span>
+                        <Check className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
+                        <span className="text-[#A8DADC] font-semibold">Copied Full Message</span>
                       </>
                     ) : (
                       <>
