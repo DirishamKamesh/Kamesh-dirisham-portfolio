@@ -515,16 +515,27 @@ export const secondaryRepositories: SecondaryRepository[] = [
   },
   {
     name: 'HackMate',
-    title: 'HackMate — Hackathon Team-Building Prototype',
+    title: 'HackMate — Hackathon Collaboration & Skill-Matching Platform',
     category: 'Student Collaboration Prototype',
     locationOrPath: 'github.com/DirishamKamesh/HackMate',
     description:
-      'Student hackathon team-discovery prototype built with React and Vite, with a working static frontend prototype hosted on Netlify.',
-    technologies: ['React', 'Vite', 'Firebase SDK'],
+      'Student networking platform with role-compatibility scoring to match hackathon teammates by skills and roles, with interfaces for browsing project ideas and community discussions.',
+    technologies: ['React', 'JavaScript', 'HTML5/CSS3', 'Vite', 'Firebase SDK'],
     repoUrl: 'https://github.com/DirishamKamesh/HackMate',
     liveDemoUrl: 'https://hackmatev1.netlify.app',
     liveDemoLabel: 'Live Preview',
     statusNote: 'Public Repo + Live Preview',
+  },
+  {
+    name: 'Tasky',
+    title: 'Tasky — Real-Time Task Management System',
+    category: 'Workflow & Productivity Application',
+    locationOrPath: 'github.com/DirishamKamesh/Tasky',
+    description:
+      'Responsive task-management application built with modular React components, interactive state management, and workflow dashboards for organizing priorities and tracking project milestones.',
+    technologies: ['React.js', 'JavaScript', 'Vite', 'CSS3'],
+    repoUrl: 'https://github.com/DirishamKamesh/Tasky',
+    statusNote: 'Resume Technical Project',
   },
   {
     name: 'NetworX',

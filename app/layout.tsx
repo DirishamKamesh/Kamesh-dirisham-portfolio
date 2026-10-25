@@ -3,6 +3,7 @@ import { Syne, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { profileData } from '@/data/profile';
 import { CustomCursor } from '@/components/ui/CustomCursor';
+import { BackToTopButton } from '@/components/ui/BackToTopButton';
 
 const syne = Syne({
   subsets: ['latin'],
@@ -85,6 +86,8 @@ export default function RootLayout({
     sameAs: [
       profileData.contact.githubUrl,
       profileData.contact.linkedinUrl,
+      profileData.contact.leetcodeUrl,
+      profileData.contact.codechefUrl,
       profileData.contact.instagramUrl,
     ],
   };
@@ -124,6 +127,7 @@ export default function RootLayout({
         />
         <CustomCursor />
         {children}
+        <BackToTopButton />
       </body>
     </html>
   );

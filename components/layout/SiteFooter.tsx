@@ -91,6 +91,19 @@ export function SiteFooter() {
                   <span>{profileData.contact.email}</span>
                 </a>
               </li>
+              {profileData.resume.available && profileData.resume.url && (
+                <li>
+                  <a
+                    href={profileData.resume.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[#E63946] font-semibold hover:text-[#A8DADC] transition-colors"
+                  >
+                    <span>Resume / CV (PDF)</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </a>
+                </li>
+              )}
               <li>
                 <a
                   href={profileData.contact.github}
@@ -110,6 +123,28 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-1 hover:text-[#A8DADC] transition-colors"
                 >
                   <span>LinkedIn ({profileData.contact.linkedinHandle})</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={profileData.contact.leetcodeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-[#A8DADC] transition-colors"
+                >
+                  <span>LeetCode (@{profileData.contact.leetcodeHandle})</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={profileData.contact.codechefUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-[#A8DADC] transition-colors"
+                >
+                  <span>CodeChef (@{profileData.contact.codechefHandle})</span>
                   <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </a>
               </li>

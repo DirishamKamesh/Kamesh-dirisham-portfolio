@@ -187,6 +187,40 @@ export function ContactSection({ preselectedService }: ContactSectionProps) {
               </a>
 
               <a
+                href={profileData.contact.leetcodeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-5 flex items-center justify-between hover:bg-[var(--bg-elevated)] transition-colors group"
+              >
+                <div>
+                  <p className="text-xs font-mono text-[#457B9D]">
+                    LEETCODE (@{profileData.contact.leetcodeHandle})
+                  </p>
+                  <p className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors mt-0.5">
+                    leetcode.com/u/{profileData.contact.leetcodeHandle}
+                  </p>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[#A8DADC]" aria-hidden="true" />
+              </a>
+
+              <a
+                href={profileData.contact.codechefUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-5 flex items-center justify-between hover:bg-[var(--bg-elevated)] transition-colors group"
+              >
+                <div>
+                  <p className="text-xs font-mono text-[#457B9D]">
+                    CODECHEF (@{profileData.contact.codechefHandle})
+                  </p>
+                  <p className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[#A8DADC] transition-colors mt-0.5">
+                    codechef.com/users/{profileData.contact.codechefHandle}
+                  </p>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[#A8DADC]" aria-hidden="true" />
+              </a>
+
+              <a
                 href={profileData.contact.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"

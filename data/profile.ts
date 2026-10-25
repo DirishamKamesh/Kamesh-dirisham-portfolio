@@ -27,14 +27,24 @@ export interface ProfileConfig {
     linkedin: string;
     linkedinUrl: string;
     linkedinHandle: string;
+    leetcodeUrl: string;
+    leetcodeHandle: string;
+    codechefUrl: string;
+    codechefHandle: string;
     instagramUrl: string;
     instagramHandle: string;
   };
   resume: {
     available: boolean;
     url: string | null;
+    fileName?: string;
     statusNote: string;
   };
+  certifications: {
+    title: string;
+    coursework: string;
+  }[];
+  achievements: string[];
   siteUrl: string;
   aboutNarrative: {
     lead: string;
@@ -53,10 +63,10 @@ export const profileData: ProfileConfig = {
   fullName: 'Dirisham Kamesh',
   initials: 'DK',
   roleTitle: 'Frontend Developer & UI Engineer',
-  positioning: 'Frontend Developer · UI Engineering · Interactive Web Experiences',
+  positioning: 'Frontend Developer · UI Engineering · Software Engineering Intern Candidate',
   heroHeadline: 'I build digital experiences with a point of view.',
   heroSupportingCopy:
-    "I'm a computer science undergraduate focused on building expressive, responsive web interfaces and practical digital products. I'm developing my frontend craft while growing toward full-stack engineering, and I'm interested in meaningful internship opportunities and selective freelance collaborations.",
+    "I'm a Computer Science Engineering student at Vignan, Duvvada focused on building expressive, responsive web applications for codebase exploration, student collaboration, faculty workflows, healthcare management, and task tracking. Seeking software engineering internships and selective freelance collaborations.",
   location: {
     city: 'Visakhapatnam (Vizag)',
     state: 'Andhra Pradesh',
@@ -79,28 +89,41 @@ export const profileData: ProfileConfig = {
     linkedin: 'https://www.linkedin.com/in/dirishamkamesh/',
     linkedinUrl: 'https://www.linkedin.com/in/dirishamkamesh/',
     linkedinHandle: 'in/dirishamkamesh',
+    leetcodeUrl: 'https://leetcode.com/u/Kamesh_1/',
+    leetcodeHandle: 'Kamesh_1',
+    codechefUrl: 'https://www.codechef.com/users/kaamesh_1',
+    codechefHandle: 'kaamesh_1',
     instagramUrl: 'https://www.instagram.com/kamesh.246/',
     instagramHandle: 'kamesh.246',
   },
   resume: {
-    // Set available: true and provide a valid PDF path (e.g. '/Dirisham_Kamesh_Resume.pdf') when ready.
-    available: false,
-    url: null,
+    available: true,
+    url: '/Dirisham_Kamesh_Resume.pdf',
+    fileName: 'Dirisham_Kamesh_Resume.pdf',
     statusNote:
-      'A formal PDF resume is currently being prepared. Recruiters and collaborators can inspect verified source code on GitHub or request an academic and project summary directly via email.',
+      'Verified 1-page resume covering C, C++, Java, Python, JavaScript, TypeScript, React.js, Node.js, technical projects (RepoRiddle, HackMate, CareSync, FacuLynk, Tasky), PGDCA certification, and five hackathons.',
   },
+  certifications: [
+    {
+      title: 'PGDCA (Post Graduate Diploma in Computer Applications)',
+      coursework: 'C, C++, Java, Python, and Microsoft Office',
+    },
+  ],
+  achievements: [
+    'Participated in five hackathons, gaining experience in collaborative problem-solving and project development.',
+  ],
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || '',
   aboutNarrative: {
     lead: 'Bridging expressive interface design with disciplined software engineering.',
     paragraphs: [
-      'I am currently pursuing my B.Tech at Vignan, Duvvada in Visakhapatnam (Class of 2029). My primary focus is frontend development and UI engineering—translating complex workflows into responsive, accessible, and visually deliberate web applications.',
-      'Rather than treating frontend work as surface decoration, I care about how component structure, state predictability, typography, and motion work together. Across my personal and hackathon projects, I have worked with React, TypeScript, Tailwind CSS, Firebase, and modular JavaScript while exploring backend integration with Node.js, Express, and Java.',
-      'Alongside web development, I regularly practice Data Structures and Algorithms in Java and Python to strengthen my core computer science foundation. My long-term goal is to grow into a versatile full-stack software engineer capable of building resilient technology products and independent software ventures.',
+      'I am currently pursuing my B.Tech in Computer Science Engineering at Vignan, Duvvada in Visakhapatnam (Class of 2029). My primary focus is frontend development and UI engineering—developing web applications for codebase exploration, student collaboration, faculty workflows, healthcare management, and task tracking.',
+      'Rather than treating frontend work as surface decoration, I care about how component structure, state predictability, typography, and motion work together. Across my personal and hackathon projects, I work with React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite, Node.js, and Express.',
+      'Alongside web development, I hold a Post Graduate Diploma in Computer Applications (PGDCA) and regularly practice Data Structures and Algorithms in C, C++, Java, and Python on LeetCode and CodeChef, having participated in five hackathons to sharpen collaborative problem-solving.',
     ],
     longTermDirection: [
       'Frontend Architecture & Interactive UI Systems',
-      'Full-Stack Web Engineering (React, TypeScript, Node.js)',
-      'Data Structures, Algorithms & Systems Foundations',
+      'Full-Stack Web Engineering (React, TypeScript, Node.js, Express)',
+      'Data Structures, Algorithms & Competitive Programming (C, C++, Java, Python)',
       'Applied AI/ML Integration & Product Engineering',
     ],
   },

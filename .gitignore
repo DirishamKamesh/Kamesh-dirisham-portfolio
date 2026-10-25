@@ -6,3 +6,5 @@ coverage/
 .env*
 !.env.example
 metadata.json
+.aistudio/
+public/assets/aistudio/

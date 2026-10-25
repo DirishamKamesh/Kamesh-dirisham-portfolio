@@ -118,22 +118,22 @@ export const skillCategoryGroups: SkillCategoryGroup[] = [
     id: 'programming-dsa',
     index: '04',
     title: 'Programming & Algorithmic Problem Solving',
-    subtitle: 'Daily data structures, OOP, and complexity optimization.',
+    subtitle: 'Data structures, OOP, PGDCA foundations, and competitive coding on LeetCode & CodeChef.',
     skills: [
       {
         name: 'Java & Object-Oriented Programming',
         tier: 'Used in projects',
-        context: 'Arrays, Linked Lists, Trees, Stacks, Queues, and Graphs in `DSA_questions_java`',
+        context: 'Arrays, Linked Lists, Trees, Stacks, Queues, and Graphs in `DSA_questions_java` & PGDCA coursework',
       },
       {
-        name: 'C Programming',
+        name: 'C, C++ & Python Programming',
         tier: 'Used in projects',
-        context: 'Algorithmic implementations in `neetcode-submissions` and systems fundamentals',
+        context: 'Algorithmic implementations in `neetcode-submissions`, PGDCA certification, and systems fundamentals',
       },
       {
-        name: 'Algorithmic Patterns (NeetCode / LeetCode)',
+        name: 'Competitive Programming (LeetCode & CodeChef)',
         tier: 'Used in projects',
-        context: 'Sliding Window, Two Pointers, Dynamic Programming, and Big-O analysis',
+        context: 'Active practice on LeetCode (@Kamesh_1) and CodeChef (@kaamesh_1): Sliding Window, Two Pointers, DP, Big-O',
       },
     ],
   },

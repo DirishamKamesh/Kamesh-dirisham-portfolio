@@ -10,8 +10,11 @@ import {
   ArrowUpRight,
   Github,
   Linkedin,
+  Code2,
+  Terminal,
   Instagram,
   Mail,
+  FileText,
 } from 'lucide-react';
 import { profileData } from '@/data/profile';
 import { Magnetic } from '@/components/ui/MagneticButton';
@@ -51,6 +54,18 @@ const VERIFIED_SOCIALS = [
     label: 'LinkedIn',
     href: profileData.contact.linkedinUrl,
     icon: Linkedin,
+  },
+  {
+    id: 'leetcode',
+    label: 'LeetCode',
+    href: profileData.contact.leetcodeUrl,
+    icon: Code2,
+  },
+  {
+    id: 'codechef',
+    label: 'CodeChef',
+    href: profileData.contact.codechefUrl,
+    icon: Terminal,
   },
   {
     id: 'instagram',
@@ -226,6 +241,18 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          {profileData.resume.available && profileData.resume.url && (
+            <a
+              href={profileData.resume.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundController.playSubtleTick(540)}
+              className="inline-flex items-center gap-1 py-2 text-sm font-medium text-[var(--text-secondary)] hover:text-[#E63946] transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A8DADC]"
+            >
+              <span>Resume</span>
+              <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </a>
+          )}
         </nav>
 
         {/* RIGHT — Immersive Dark/Light Toggle + Social Icons + Prominent "LET'S TALK ↗" CTA */}
@@ -241,7 +268,7 @@ export function SiteHeader() {
           {/* Compact borderless icon-only links on wide desktop where space allows */}
           <div
             aria-label="Social profiles"
-            className="hidden lg:flex items-center gap-1 pr-2 border-r border-[var(--border-subtle)]"
+            className="hidden xl:flex items-center gap-1 pr-2 border-r border-[var(--border-subtle)]"
           >
             {VERIFIED_SOCIALS.map((social) => {
               const Icon = social.icon;
@@ -347,6 +374,23 @@ export function SiteHeader() {
                     </Link>
                   );
                 })}
+                {profileData.resume.available && profileData.resume.url && (
+                  <a
+                    href={profileData.resume.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between py-3.5 px-2 text-base font-display font-bold text-[#E63946] hover:text-[#A8DADC] transition-colors"
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className="font-mono text-xs font-normal text-[#457B9D] tabular-nums">
+                        05
+                      </span>
+                      <span>Resume (PDF)</span>
+                    </span>
+                    <FileText className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                )}
               </div>
 
               {/* Theme Switcher Row inside Mobile Menu */}
@@ -382,11 +426,11 @@ export function SiteHeader() {
               </div>
 
               {/* Clean Unboxed Social Row in Mobile Menu */}
-              <div className="pt-4 mt-4 border-t border-[var(--border-subtle)] flex items-center justify-between gap-4">
+              <div className="pt-4 mt-4 border-t border-[var(--border-subtle)] flex flex-col gap-2.5">
                 <span className="text-[11px] font-mono text-[var(--text-secondary)]">
                   CONNECT
                 </span>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                   {VERIFIED_SOCIALS.map((social) => {
                     const Icon = social.icon;
                     return (
@@ -399,7 +443,7 @@ export function SiteHeader() {
                         onClick={() => setMobileMenuOpen(false)}
                         className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-primary)] hover:text-[#A8DADC] transition-colors"
                       >
-                        <Icon className="w-4 h-4" aria-hidden="true" />
+                        <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>{social.label}</span>
                       </a>
                     );
@@ -410,7 +454,7 @@ export function SiteHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-primary)] hover:text-[#A8DADC] transition-colors"
                   >
-                    <Mail className="w-4 h-4" aria-hidden="true" />
+                    <Mail className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>Email</span>
                   </a>
                 </div>

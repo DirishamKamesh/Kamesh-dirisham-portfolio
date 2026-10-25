@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowUpRight, Mail, FileText } from 'lucide-react';
+import { ArrowUpRight, Mail, FileText, Download } from 'lucide-react';
 import { profileData } from '@/data/profile';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { soundController } from '@/lib/sound';
@@ -49,6 +49,30 @@ export function AboutAndProcessSection() {
               </div>
 
               <div className="space-y-1 pb-4 border-b border-[var(--border-subtle)]">
+                <p className="text-xs font-mono text-[#457B9D]">
+                  CERTIFICATION &amp; HACKATHON EXPERIENCE
+                </p>
+                {profileData.certifications.map((cert) => (
+                  <div key={cert.title} className="space-y-0.5">
+                    <p className="text-sm font-semibold text-[var(--text-primary)]">
+                      {cert.title}
+                    </p>
+                    <p className="text-xs text-[var(--text-secondary)]">
+                      Coursework: {cert.coursework}
+                    </p>
+                  </div>
+                ))}
+                {profileData.achievements.map((ach) => (
+                  <p
+                    key={ach}
+                    className="text-xs text-[#A8DADC] pt-1 leading-relaxed"
+                  >
+                    · {ach}
+                  </p>
+                ))}
+              </div>
+
+              <div className="space-y-1 pb-4 border-b border-[var(--border-subtle)]">
                 <p className="text-xs font-mono text-[#457B9D]">BASE OF OPERATIONS</p>
                 <p className="text-sm font-semibold text-[var(--text-primary)]">
                   {profileData.location.display}
@@ -72,56 +96,65 @@ export function AboutAndProcessSection() {
               </div>
             </div>
 
-            {/* Honest Resume Handling Card */}
-            <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3 shadow-[0_8px_28px_rgba(6,13,22,0.2)]">
+            {/* Verified Resume Handling Card */}
+            <div className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] p-6 space-y-3.5 shadow-[0_8px_28px_rgba(6,13,22,0.2)]">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-mono font-semibold text-[#E63946] flex items-center gap-2">
                   <FileText className="w-4 h-4" aria-hidden="true" />
                   <span>CURRICULUM VITAE / RESUME</span>
                 </span>
-                <span className="text-xs font-mono text-[var(--text-secondary)]">
+                <span className="text-xs font-mono text-[#A8DADC] font-semibold">
                   {profileData.resume.available ? 'PDF READY' : 'IN PREPARATION'}
                 </span>
               </div>
 
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                {profileData.resume.statusNote}
+              </p>
+
               {profileData.resume.available && profileData.resume.url ? (
-                <div className="pt-2">
+                <div className="pt-1 flex flex-wrap items-center gap-3">
+                  <a
+                    href={profileData.resume.url}
+                    download={profileData.resume.fileName || 'Dirisham_Kamesh_Resume.pdf'}
+                    onClick={() => soundController.playSubtleTick(600)}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold bg-[#E63946] text-[#F1FAEE] hover:bg-[var(--accent-primary)] hover:text-[var(--accent-primary-fg)] transition-colors whitespace-nowrap"
+                  >
+                    <Download className="w-3.5 h-3.5" aria-hidden="true" />
+                    <span>Download Resume (PDF)</span>
+                  </a>
                   <a
                     href={profileData.resume.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold bg-[var(--accent-primary)] text-[var(--accent-primary-fg)] hover:bg-[#F1FAEE] hover:text-[#0D1929] transition-colors"
+                    onClick={() => soundController.playSubtleTick(540)}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-mono font-semibold bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[#457B9D] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors whitespace-nowrap"
                   >
-                    <span>Download Resume (PDF)</span>
+                    <span>View PDF</span>
                     <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </a>
                 </div>
               ) : (
-                <>
-                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {profileData.resume.statusNote}
-                  </p>
-                  <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-mono">
-                    <a
-                      href={`mailto:${profileData.contact.email}?subject=${encodeURIComponent(
-                        'Internship / Academic Summary Request — Dirisham Kamesh'
-                      )}`}
-                      className="inline-flex items-center gap-1.5 text-[#A8DADC] font-semibold hover:underline underline-offset-4"
-                    >
-                      <Mail className="w-3.5 h-3.5" aria-hidden="true" />
-                      <span>Request Academic &amp; Project Overview via Email</span>
-                    </a>
-                    <a
-                      href={profileData.contact.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[var(--text-primary)] hover:text-[#A8DADC] transition-colors"
-                    >
-                      <span>GitHub Profile</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
-                    </a>
-                  </div>
-                </>
+                <div className="pt-1 flex flex-wrap items-center gap-4 text-xs font-mono">
+                  <a
+                    href={`mailto:${profileData.contact.email}?subject=${encodeURIComponent(
+                      'Internship / Academic Summary Request — Dirisham Kamesh'
+                    )}`}
+                    className="inline-flex items-center gap-1.5 text-[#A8DADC] font-semibold hover:underline underline-offset-4"
+                  >
+                    <Mail className="w-3.5 h-3.5" aria-hidden="true" />
+                    <span>Request Academic &amp; Project Overview via Email</span>
+                  </a>
+                  <a
+                    href={profileData.contact.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[var(--text-primary)] hover:text-[#A8DADC] transition-colors"
+                  >
+                    <span>GitHub Profile</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </a>
+                </div>
               )}
             </div>
           </div>

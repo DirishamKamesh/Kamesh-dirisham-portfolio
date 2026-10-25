@@ -8,8 +8,11 @@ import {
   ArrowUpRight,
   Github,
   Linkedin,
+  Code2,
+  Terminal,
   Instagram,
   Mail,
+  FileText,
 } from 'lucide-react';
 import { profileData } from '@/data/profile';
 import { DKMonogram } from '@/components/ui/DKMonogram';
@@ -38,6 +41,7 @@ export function HeroSection() {
 
   return (
     <section
+      id="hero-section"
       aria-labelledby="hero-heading"
       className="relative bg-[var(--bg-canvas)] border-b border-[var(--border-subtle)] overflow-hidden transition-colors duration-300"
     >
@@ -315,10 +319,27 @@ export function HeroSection() {
                     <span>Discuss a project</span>
                   </Link>
                 </Magnetic>
+
+                {/* Verified Resume PDF Button */}
+                {profileData.resume.available && profileData.resume.url && (
+                  <Magnetic strength={0.18}>
+                    <a
+                      href={profileData.resume.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => soundController.playSubtleTick(580)}
+                      className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-mono font-semibold border border-[#457B9D] bg-[var(--bg-canvas)] text-[var(--text-primary)] hover:border-[#A8DADC] hover:text-[#A8DADC] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A8DADC]"
+                    >
+                      <FileText className="w-4 h-4 text-[#E63946]" aria-hidden="true" />
+                      <span>Resume (PDF)</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </a>
+                  </Magnetic>
+                )}
               </div>
 
               {/* Verified Social & Direct Contact Strip */}
-              <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs font-mono">
+              <div className="pt-4 border-t border-[var(--border-subtle)] flex flex-wrap items-center gap-x-4 gap-y-2.5 text-xs font-mono">
                 <span className="font-semibold text-[var(--text-primary)]">
                   DIRECT PROFILES:
                 </span>
@@ -348,6 +369,38 @@ export function HeroSection() {
                 >
                   <Linkedin className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
                   <span>{profileData.contact.linkedinHandle}</span>
+                  <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                </a>
+
+                <span aria-hidden="true" className="text-[#457B9D]">
+                  /
+                </span>
+
+                <a
+                  href={profileData.contact.leetcodeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundController.playSubtleTick(520)}
+                  className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
+                >
+                  <Code2 className="w-3.5 h-3.5 text-[#E63946]" aria-hidden="true" />
+                  <span>LeetCode (@{profileData.contact.leetcodeHandle})</span>
+                  <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                </a>
+
+                <span aria-hidden="true" className="text-[#457B9D]">
+                  /
+                </span>
+
+                <a
+                  href={profileData.contact.codechefUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => soundController.playSubtleTick(520)}
+                  className="inline-flex items-center gap-1.5 text-[var(--text-secondary)] hover:text-[#A8DADC] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8DADC]"
+                >
+                  <Terminal className="w-3.5 h-3.5 text-[#A8DADC]" aria-hidden="true" />
+                  <span>CodeChef (@{profileData.contact.codechefHandle})</span>
                   <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                 </a>
 
