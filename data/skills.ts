@@ -14,6 +14,76 @@ export interface SkillCategoryGroup {
   skills: SkillItem[];
 }
 
+export interface FrontendToolkitItem {
+  id: 'react' | 'nextjs' | 'typescript' | 'tailwindcss' | 'framer-motion';
+  index: string;
+  name: string;
+  badge: string;
+  role: string;
+  description: string;
+  verifiedIn: string[];
+  accentColor: string;
+}
+
+export const frontendToolkitItems: FrontendToolkitItem[] = [
+  {
+    id: 'react',
+    index: '01',
+    name: 'React',
+    badge: 'v19 // UI Runtime',
+    role: 'Component Architecture & State',
+    description:
+      'Declarative component hierarchies, custom hooks, and interactive state orchestration across spatial node graphs and multi-panel web apps.',
+    verifiedIn: ['Repo-Riddle', 'Ready-map', 'FacuLynk', 'HackMate'],
+    accentColor: '#A8DADC',
+  },
+  {
+    id: 'nextjs',
+    index: '02',
+    name: 'Next.js',
+    badge: 'App Router // SSR & SSG',
+    role: 'Full-Stack React Framework',
+    description:
+      'Server and Client Component composition, dynamic project case-study routing, SEO metadata pipelines, and optimized production bundling.',
+    verifiedIn: ['Portfolio v2', 'Case Study Engine'],
+    accentColor: '#E63946',
+  },
+  {
+    id: 'typescript',
+    index: '03',
+    name: 'TypeScript',
+    badge: 'Strict Mode // Types',
+    role: 'Type-Safe UI & Data Contracts',
+    description:
+      'End-to-end static typing for AST dependency graphs, interactive simulation state, centralized content schemas, and API interfaces.',
+    verifiedIn: ['Repo-Riddle', 'Ready-map', 'FacuLynk', 'Portfolio v2'],
+    accentColor: '#457B9D',
+  },
+  {
+    id: 'tailwindcss',
+    index: '04',
+    name: 'Tailwind CSS',
+    badge: 'v4 // Design Tokens',
+    role: 'Responsive Styling & Theming',
+    description:
+      'Utility-first layout engineering paired with custom CSS variable token systems for dual Midnight & Daylight Blueprint themes.',
+    verifiedIn: ['Repo-Riddle', 'Ready-map', 'FacuLynk', 'Portfolio v2'],
+    accentColor: '#A8DADC',
+  },
+  {
+    id: 'framer-motion',
+    index: '05',
+    name: 'Framer Motion',
+    badge: 'Motion // Choreography',
+    role: 'Interactive UI Animation',
+    description:
+      'Spring-physics micro-interactions, scroll-triggered reveals, layout transitions, and accessible reduced-motion-aware choreography.',
+    verifiedIn: ['Ready-map', 'Portfolio v2'],
+    accentColor: '#E63946',
+  },
+];
+
+
 export const skillCategoryGroups: SkillCategoryGroup[] = [
   {
     id: 'frontend-ui',
